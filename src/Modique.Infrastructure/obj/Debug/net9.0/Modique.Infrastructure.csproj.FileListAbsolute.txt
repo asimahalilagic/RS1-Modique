@@ -1,0 +1,17 @@
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\bin\Debug\net9.0\Modique.Infrastructure.deps.json
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\bin\Debug\net9.0\Modique.Infrastructure.runtimeconfig.json
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\bin\Debug\net9.0\Modique.Infrastructure.dll
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\bin\Debug\net9.0\Modique.Infrastructure.pdb
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\bin\Debug\net9.0\Modique.Domain.dll
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\bin\Debug\net9.0\Modique.Domain.pdb
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\obj\Debug\net9.0\Modique.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\obj\Debug\net9.0\Modique.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\obj\Debug\net9.0\Modique.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\obj\Debug\net9.0\Modique.Infrastructure.AssemblyInfo.cs
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\obj\Debug\net9.0\Modique.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\obj\Debug\net9.0\Modique..79D52DE0.Up2Date
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\obj\Debug\net9.0\Modique.Infrastructure.dll
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\obj\Debug\net9.0\refint\Modique.Infrastructure.dll
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\obj\Debug\net9.0\Modique.Infrastructure.pdb
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\obj\Debug\net9.0\Modique.Infrastructure.genruntimeconfig.cache
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Infrastructure\obj\Debug\net9.0\ref\Modique.Infrastructure.dll

@@ -1,0 +1,17 @@
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\bin\Debug\net9.0\Modique.Application.deps.json
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\bin\Debug\net9.0\Modique.Application.dll
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\bin\Debug\net9.0\Modique.Application.pdb
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\bin\Debug\net9.0\Modique.Domain.dll
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\bin\Debug\net9.0\Modique.Infrastructure.dll
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\bin\Debug\net9.0\Modique.Domain.pdb
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\bin\Debug\net9.0\Modique.Infrastructure.pdb
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\obj\Debug\net9.0\Modique.Application.csproj.AssemblyReference.cache
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\obj\Debug\net9.0\Modique.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\obj\Debug\net9.0\Modique.Application.AssemblyInfoInputs.cache
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\obj\Debug\net9.0\Modique.Application.AssemblyInfo.cs
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\obj\Debug\net9.0\Modique.Application.csproj.CoreCompileInputs.cache
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\obj\Debug\net9.0\Modique..35A1C8FC.Up2Date
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\obj\Debug\net9.0\Modique.Application.dll
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\obj\Debug\net9.0\refint\Modique.Application.dll
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\obj\Debug\net9.0\Modique.Application.pdb
+C:\Users\WIN10\Desktop\rs1-2025-26-Modique\src\Modique.Application\obj\Debug\net9.0\ref\Modique.Application.dll

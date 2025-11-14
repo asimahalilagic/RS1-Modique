@@ -1,0 +1,836 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B03E0C7B-2D0C-40D3-9E7B-E8FA39EB15ED}|src\\Modique.API\\Modique.API.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B03E0C7B-2D0C-40D3-9E7B-E8FA39EB15ED}|src\\Modique.API\\Modique.API.csproj|solutionrelative:src\\modique.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{874D40CE-9CA5-45EC-8A96-15A3F26018C7}|src\\Modique.Infrastructure\\Modique.Infrastructure.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.infrastructure\\data\\modiquedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{874D40CE-9CA5-45EC-8A96-15A3F26018C7}|src\\Modique.Infrastructure\\Modique.Infrastructure.csproj|solutionrelative:src\\modique.infrastructure\\data\\modiquedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\bestsellerranking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\bestsellerranking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\customerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\customerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B03E0C7B-2D0C-40D3-9E7B-E8FA39EB15ED}|src\\Modique.API\\Modique.API.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.api\\modique.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{B03E0C7B-2D0C-40D3-9E7B-E8FA39EB15ED}|src\\Modique.API\\Modique.API.csproj|solutionrelative:src\\modique.api\\modique.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{874D40CE-9CA5-45EC-8A96-15A3F26018C7}|src\\Modique.Infrastructure\\Modique.Infrastructure.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.infrastructure\\modique.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{874D40CE-9CA5-45EC-8A96-15A3F26018C7}|src\\Modique.Infrastructure\\Modique.Infrastructure.csproj|solutionrelative:src\\modique.infrastructure\\modique.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B03E0C7B-2D0C-40D3-9E7B-E8FA39EB15ED}|src\\Modique.API\\Modique.API.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B03E0C7B-2D0C-40D3-9E7B-E8FA39EB15ED}|src\\Modique.API\\Modique.API.csproj|solutionrelative:src\\modique.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{874D40CE-9CA5-45EC-8A96-15A3F26018C7}|src\\Modique.Infrastructure\\Modique.Infrastructure.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.infrastructure\\data\\modiquedbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{874D40CE-9CA5-45EC-8A96-15A3F26018C7}|src\\Modique.Infrastructure\\Modique.Infrastructure.csproj|solutionrelative:src\\modique.infrastructure\\data\\modiquedbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\productoption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\productoption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\favorite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\favorite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\supplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\supplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\color.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\color.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\productquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\productquestion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\inventorylog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\inventorylog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\sizeguide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\sizeguide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\pricehistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\pricehistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\relatedproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\relatedproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\seometa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\seometa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\bannerad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\bannerad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\searchfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\searchfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\productview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\productview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\newslettersubscription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\newslettersubscription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\couponusage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\couponusage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\coupon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\coupon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\wishlistitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\wishlistitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\wishlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\wishlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\returnrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\returnrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\promotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\promotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\reviewimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\reviewimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\country.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\country.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\adress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\adress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\paymentmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\paymentmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\shippingmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\shippingmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\productimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\productimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\brand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\brand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\size.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\size.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|c:\\users\\win10\\desktop\\rs1-2025-26-modique\\src\\modique.domain\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}|src\\Modique.Domain\\Modique.Domain.csproj|solutionrelative:src\\modique.domain\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Modique.API",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.API\\Modique.API.csproj",
+              "RelativeDocumentMoniker": "src\\Modique.API\\Modique.API.csproj",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.API\\Modique.API.csproj",
+              "RelativeToolTip": "src\\Modique.API\\Modique.API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-11-03T23:49:49.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ModiqueDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Infrastructure\\Data\\ModiqueDbContext.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Infrastructure\\Data\\ModiqueDbContext.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Infrastructure\\Data\\ModiqueDbContext.cs",
+              "RelativeToolTip": "src\\Modique.Infrastructure\\Data\\ModiqueDbContext.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAIA8wEEAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T23:14:04.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CustomerProfile.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\CustomerProfile.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\CustomerProfile.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\CustomerProfile.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\CustomerProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T23:28:55.149Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BestsellerRanking.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\BestsellerRanking.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\BestsellerRanking.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\BestsellerRanking.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\BestsellerRanking.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA+wA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:56:06.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.API\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\Modique.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.API\\appsettings.json",
+              "RelativeToolTip": "src\\Modique.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-03T23:09:58.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Modique.Infrastructure",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Infrastructure\\Modique.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "src\\Modique.Infrastructure\\Modique.Infrastructure.csproj",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Infrastructure\\Modique.Infrastructure.csproj",
+              "RelativeToolTip": "src\\Modique.Infrastructure\\Modique.Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-11-03T23:48:24.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ModiqueDbContextFactory.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Infrastructure\\Data\\ModiqueDbContextFactory.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Infrastructure\\Data\\ModiqueDbContextFactory.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Infrastructure\\Data\\ModiqueDbContextFactory.cs",
+              "RelativeToolTip": "src\\Modique.Infrastructure\\Data\\ModiqueDbContextFactory.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAADgvwwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T23:40:21.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.API\\Program.cs",
+              "RelativeDocumentMoniker": "src\\Modique.API\\Program.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.API\\Program.cs",
+              "RelativeToolTip": "src\\Modique.API\\Program.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAswDIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T23:06:38.598Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CartItem.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\CartItem.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\CartItem.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\CartItem.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\CartItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:09:21.918Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductOption.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\ProductOption.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\ProductOption.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\ProductOption.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\ProductOption.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAjwAgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:00:58.607Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Favorite.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Favorite.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Favorite.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Favorite.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Favorite.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAIA2wA4AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:24:33.14Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Role.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Role.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Role.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Role.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T23:15:38.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ProductQuestion.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\ProductQuestion.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\ProductQuestion.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\ProductQuestion.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\ProductQuestion.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAqwA4AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:58:52.174Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\User.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\User.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\User.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAwwBAAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T23:04:18.732Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "InventoryLog.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\InventoryLog.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\InventoryLog.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\InventoryLog.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\InventoryLog.cs",
+              "ViewState": "AgIAAA4AAABQBatPBbs0wA8AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:57:44.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Color.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Color.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Color.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Color.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Color.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAADwvwwAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T21:42:10.634Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Supplier.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Supplier.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Supplier.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Supplier.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Supplier.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAowBAAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T21:35:29.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "SizeGuide.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\SizeGuide.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\SizeGuide.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\SizeGuide.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\SizeGuide.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:57:09.596Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "PriceHistory.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\PriceHistory.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\PriceHistory.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\PriceHistory.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\PriceHistory.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA+wBAAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:56:40.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "RelatedProduct.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\RelatedProduct.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\RelatedProduct.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\RelatedProduct.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\RelatedProduct.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAewA8AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:55:20.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "SeoMeta.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\SeoMeta.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\SeoMeta.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\SeoMeta.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\SeoMeta.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:54:06.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "BannerAd.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\BannerAd.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\BannerAd.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\BannerAd.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\BannerAd.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAqwA8AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:53:27.337Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "SearchFilter.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\SearchFilter.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\SearchFilter.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\SearchFilter.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\SearchFilter.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAqwBQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:51:56.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ProductView.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\ProductView.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\ProductView.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\ProductView.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\ProductView.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAIA2wA4AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:47:33.244Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "NewsletterSubscription.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\NewsletterSubscription.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\NewsletterSubscription.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\NewsletterSubscription.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\NewsletterSubscription.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:46:55.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "CouponUsage.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\CouponUsage.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\CouponUsage.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\CouponUsage.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\CouponUsage.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAuwBAAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:43:14.518Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Coupon.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Coupon.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Coupon.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Coupon.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Coupon.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAqwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:35:38.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "WishlistItem.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\WishlistItem.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\WishlistItem.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\WishlistItem.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\WishlistItem.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAQwA4AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:34:58.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Wishlist.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Wishlist.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Wishlist.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Wishlist.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Wishlist.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAuwA4AAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:34:24.79Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Notification.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Notification.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Notification.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Notification.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAqwAwAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:32:04.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ReturnRequest.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\ReturnRequest.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\ReturnRequest.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\ReturnRequest.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\ReturnRequest.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAjwBAAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:31:29.424Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Promotion.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Promotion.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Promotion.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Promotion.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Promotion.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAuwAwAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:27:48.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "ReviewImage.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\ReviewImage.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\ReviewImage.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\ReviewImage.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\ReviewImage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:24:01.17Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Review.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Review.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Review.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Review.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Review.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAuwBQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:22:42.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "Adress.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Adress.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Adress.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Adress.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Adress.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAAA8AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:19:27.289Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "PaymentMethod.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\PaymentMethod.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\PaymentMethod.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\PaymentMethod.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\PaymentMethod.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:16:34.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "ShippingMethod.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\ShippingMethod.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\ShippingMethod.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\ShippingMethod.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\ShippingMethod.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:15:59.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "OrderStatus.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\OrderStatus.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\OrderStatus.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\OrderStatus.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\OrderStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:15:19.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "OrderItem.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\OrderItem.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\OrderItem.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\OrderItem.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\OrderItem.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAjwAwAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:13:18.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "City.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\City.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\City.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\City.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\City.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:05:38.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Country.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Country.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Country.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Country.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Country.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:06:38.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Order.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Order.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Order.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Order.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAuwBwAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:10:37.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "Cart.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Cart.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Cart.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Cart.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Cart.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAwBEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:08:42.563Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "ProductImage.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\ProductImage.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\ProductImage.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\ProductImage.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\ProductImage.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAjwBIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T22:05:08.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "Size.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Size.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Size.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Size.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Size.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T21:45:23.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "Brand.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Brand.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Brand.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Brand.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Brand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T21:35:01.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Category.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Category.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Category.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T21:34:31.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Product.cs",
+              "RelativeDocumentMoniker": "src\\Modique.Domain\\Entities\\Product.cs",
+              "ToolTip": "C:\\Users\\WIN10\\Desktop\\rs1-2025-26-Modique\\src\\Modique.Domain\\Entities\\Product.cs",
+              "RelativeToolTip": "src\\Modique.Domain\\Entities\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T21:27:53.477Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
