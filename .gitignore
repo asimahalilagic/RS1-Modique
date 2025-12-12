@@ -1,16 +1,61 @@
-# Build Folders
+########## .NET / C# ##########
 bin/
 obj/
-
-# Visual Studio
-.vs/
 *.user
 *.suo
+*.rsuser
 *.cache
+*.pdb
+*.mdb
+*.opendb
 
-# VS Code
+# Publish output
+publish/
+*.exe
+*.dll
+*.log
+
+# EF Migrations snapshots
+Migrations/*Snapshot.cs
+
+# Ignore sensitive config
+appsettings.Development.json
+appsettings.*.json
+*.env
+
+########## Visual Studio ##########
+.vs/
 .vscode/
 
-# Others
-appsettings.Development.json
-*.db
+# Backup files
+*.bak
+
+########## ANGULAR ##########
+# Node
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+
+# Angular build
+dist/
+dist-ssr/
+.angular/
+.angular/cache/
+
+# Environment files
+src/environments/environment.ts
+src/environments/environment.prod.ts
+
+########## OS files ##########
+.DS_Store
+Thumbs.db
+
+########## Logs ##########
+*.log
+logs/
+
+########## Others ##########
+/.idea/
+/*.iml
