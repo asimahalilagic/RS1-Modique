@@ -1,14 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Modique.Domain.Entities;
-using Modique.Domain.DTO.Auth;
-using Modique.Infrastructure.Data;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Modique.Application.DTOs.Auth;
+using Modique.Application.Interfaces;
 using System.Security.Claims;
-using System.Text;
-using BCrypt.Net;
-using Modique.DTO.Auth;
 
 namespace Modique.Controllers
 {
@@ -16,176 +10,138 @@ namespace Modique.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly ModiqueDbContext _db;
-        private readonly IConfiguration _config;
+        private readonly IAuthService _authService;
         private readonly ILogger<AuthController> _logger;
 
-        public AuthController(
-            ModiqueDbContext db,
-            IConfiguration config,
-            ILogger<AuthController> logger)
+        public AuthController(IAuthService authService, ILogger<AuthController> logger)
         {
-            _db = db;
-            _config = config;
+            _authService = authService;
             _logger = logger;
         }
 
+        /// <summary>
+        /// Register a new user
+        /// </summary>
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterRequest request)
+        public async Task<IActionResult> Register([FromBody] RegisterRequestDto request)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             try
             {
-                if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
-
-                // Provjeri da li email već postoji
-                if (await _db.Users.AnyAsync(u => u.Email == request.Email))
-                {
-                    _logger.LogWarning("Registration attempt with existing email: {Email}", request.Email);
-                    return BadRequest(new { message = "Registration failed." });
-                }
-
-                // Pronađi default User role
-                var userRole = await _db.Roles.FirstOrDefaultAsync(r => r.Name == "User");
-                if (userRole == null)
-                {
-                    _logger.LogError("Default 'User' role not found in database");
-                    return StatusCode(500, new { message = "System configuration error." });
-                }
-
-                // Kreiraj novog korisnika
-                var user = new User
-                {
-                    FirstName = request.FirstName,
-                    LastName = request.LastName,
-                    Email = request.Email.ToLower(), // Normalizuj email
-                    PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password),
-                    RoleId = userRole.RoleId,
-                    RegistrationDate = DateTime.UtcNow,
-                    Active = true
-                };
-
-                _db.Users.Add(user);
-                await _db.SaveChangesAsync();
-
-                _logger.LogInformation("New user registered: {Email}", user.Email);
-
-                // Vrati minimalne info
-                return Ok(new
-                {
-                    user.UserId,
-                    user.Email,
-                    user.FirstName,
-                    user.LastName,
-                    message = "Registration successful"
-                });
+                var result = await _authService.RegisterAsync(request);
+                return Ok(result);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { message = ex.Message });
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error during registration for email: {Email}", request.Email);
+                _logger.LogError(ex, "Error during registration");
                 return StatusCode(500, new { message = "An error occurred during registration." });
             }
         }
 
+        /// <summary>
+        /// Login user and get JWT token
+        /// </summary>
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginRequest request)
+        public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             try
             {
-                if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
-
-                // Pronađi korisnika sa role-om
-                var user = await _db.Users
-                    .Include(u => u.Role)
-                    .FirstOrDefaultAsync(u => u.Email == request.Email.ToLower());
-
-                if (user == null)
-                {
-                    _logger.LogWarning("Login attempt with non-existent email: {Email}", request.Email);
-                    return Unauthorized(new { message = "Invalid credentials." });
-                }
-
-                // Provjeri da li je user aktivan
-                if (!user.Active)
-                {
-                    _logger.LogWarning("Login attempt for inactive user: {Email}", request.Email);
-                    return Unauthorized(new { message = "Account is inactive." });
-                }
-
-                // Verifikuj password
-                var isPasswordValid = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash);
-                if (!isPasswordValid)
-                {
-                    _logger.LogWarning("Failed login attempt for user: {Email}", request.Email);
-                    return Unauthorized(new { message = "Invalid credentials." });
-                }
-
-                // Generiši JWT token
-                var token = GenerateJwtToken(user);
-                var expiresAt = DateTime.UtcNow.AddHours(6);
-
-                _logger.LogInformation("Successful login for user: {Email}", user.Email);
-
-                return Ok(new AuthResponse
-                {
-                    Token = token,
-                    ExpiresAt = expiresAt,
-                    User = new UserDto
-                    {
-                        UserId = user.UserId,
-                        Email = user.Email,
-                        FirstName = user.FirstName,
-                        LastName = user.LastName,
-                        Role = user.Role?.Name
-                    }
-                });
+                var result = await _authService.LoginAsync(request);
+                return Ok(result);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return Unauthorized(new { message = ex.Message });
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error during login for email: {Email}", request.Email);
+                _logger.LogError(ex, "Error during login");
                 return StatusCode(500, new { message = "An error occurred during login." });
             }
         }
 
-        [HttpPost("refresh")]
-        public async Task<IActionResult> RefreshToken()
+        /// <summary>
+        /// Get current logged in user information
+        /// </summary>
+        [HttpGet("me")]
+        [Authorize]
+        public async Task<IActionResult> GetCurrentUser()
         {
-            // Implementacija za refresh token ako trebaš
-            return Ok(new { message = "Refresh token endpoint - to be implemented" });
+            try
+            {
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+                if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out var userId))
+                {
+                    return Unauthorized(new { message = "Invalid token." });
+                }
+
+                var user = await _authService.GetCurrentUserAsync(userId);
+                return Ok(user);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error getting current user");
+                return StatusCode(500, new { message = "An error occurred." });
+            }
         }
 
-        private string GenerateJwtToken(User user)
+        /// <summary>
+        /// Change password for logged in user
+        /// </summary>
+        [HttpPost("change-password")]
+        [Authorize]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto request)
         {
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Name, $"{user.FirstName} {user.LastName}"),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) // Jedinstveni ID tokena
-            };
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            // Dodaj role claim ako postoji
-            if (!string.IsNullOrEmpty(user.Role?.Name))
+            try
             {
-                claims.Add(new Claim(ClaimTypes.Role, user.Role.Name));
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+                if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out var userId))
+                {
+                    return Unauthorized(new { message = "Invalid token." });
+                }
+
+                await _authService.ChangePasswordAsync(userId, request);
+                return Ok(new { message = "Password changed successfully." });
             }
+            catch (UnauthorizedAccessException ex)
+            {
+                return Unauthorized(new { message = ex.Message });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error changing password");
+                return StatusCode(500, new { message = "An error occurred while changing password." });
+            }
+        }
 
-            var key = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(_config["Jwt:Key"] ?? throw new InvalidOperationException("JWT Key not configured"))
-            );
-
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(
-                issuer: _config["Jwt:Issuer"],
-                audience: _config["Jwt:Audience"] ?? _config["Jwt:Issuer"],
-                claims: claims,
-                expires: DateTime.UtcNow.AddHours(6),
-                signingCredentials: creds
-            );
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
+        /// <summary>
+        /// Refresh JWT token (to be implemented)
+        /// </summary>
+        [HttpPost("refresh")]
+        [Authorize]
+        public IActionResult RefreshToken()
+        {
+            return Ok(new { message = "Refresh token endpoint - to be implemented" });
         }
     }
 }

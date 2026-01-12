@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Modique.Domain.Entities
 {
@@ -14,6 +11,5 @@ namespace Modique.Domain.Entities
         public string Phone { get; set; } = "";
         public string Email { get; set; } = "";
         public ICollection<Product>? Products { get; set; }
-        
     }
 }

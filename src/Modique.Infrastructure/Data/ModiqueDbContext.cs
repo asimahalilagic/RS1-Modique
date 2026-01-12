@@ -58,7 +58,6 @@ namespace Modique.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            base.OnModelCreating(modelBuilder);
 
             foreach (var fk in modelBuilder.Model.GetEntityTypes()
                      .SelectMany(e => e.GetForeignKeys()))

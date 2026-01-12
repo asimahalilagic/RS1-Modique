@@ -193,7 +193,7 @@ namespace Modique.Infrastructure.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ProductOptionId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -203,7 +203,7 @@ namespace Modique.Infrastructure.Migrations
 
                     b.HasIndex("CartId");
 
-                    b.HasIndex("ProductOptionId");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("CartItems");
                 });
@@ -1195,6 +1195,10 @@ namespace Modique.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("RegistrationDate")
                         .HasColumnType("datetime2");
 
@@ -1311,15 +1315,15 @@ namespace Modique.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("Modique.Domain.Entities.ProductOption", "ProductOption")
+                    b.HasOne("Modique.Domain.Entities.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductOptionId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Cart");
 
-                    b.Navigation("ProductOption");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Modique.Domain.Entities.City", b =>

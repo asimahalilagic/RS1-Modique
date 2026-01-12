@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Modique.Domain.Entities;
-using Modique.Infrastructure.Data;
-
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Modique.Application.DTOs.Products;
+using Modique.Application.Interfaces;
 
 namespace Modique.Controllers
 {
@@ -10,73 +9,92 @@ namespace Modique.Controllers
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
-        private readonly ModiqueDbContext _db;
+        private readonly IProductService _productService;
+        private readonly ILogger<ProductsController> _logger;
 
-        public ProductsController(ModiqueDbContext db)
+        public ProductsController(IProductService productService, ILogger<ProductsController> logger)
         {
-            _db = db;
+            _productService = productService;
+            _logger = logger;
         }
 
-       
+        /// <summary>
+        /// Get all products with pagination
+        /// </summary>
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 20)
         {
-            var products = await _db.Products.ToListAsync();
-            return Ok(products);
+            if (page < 1) page = 1;
+            if (pageSize < 1 || pageSize > 100) pageSize = 20;
+
+            var result = await _productService.GetAllAsync(page, pageSize);
+            return Ok(result);
         }
 
-        // GET: api/products/5
+        /// <summary>
+        /// Get product by ID
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var product = await _db.Products.FindAsync(id);
+            var product = await _productService.GetByIdAsync(id);
             if (product == null)
-                return NotFound();
+                return NotFound(new { message = "Product not found." });
 
             return Ok(product);
         }
 
-        
+        /// <summary>
+        /// Create a new product (Admin only)
+        /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Product product)
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> Create([FromBody] CreateProductDto dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            _db.Products.Add(product);
-            await _db.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetById), new { id = product.ProductId }, product);
+            try
+            {
+                var product = await _productService.CreateAsync(dto);
+                return CreatedAtAction(nameof(GetById), new { id = product.ProductId }, product);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error creating product");
+                return StatusCode(500, new { message = "An error occurred while creating the product." });
+            }
         }
 
-        // PUT: api/products/5
+        /// <summary>
+        /// Update a product (Admin only)
+        /// </summary>
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Product product)
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> Update(int id, [FromBody] UpdateProductDto dto)
         {
-            if (id != product.ProductId)
-                return BadRequest("Product ID mismatch.");
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            if (!await _db.Products.AnyAsync(p => p.ProductId == id))
-                return NotFound();
-
-            _db.Entry(product).State = EntityState.Modified;
-            await _db.SaveChangesAsync();
+            var product = await _productService.UpdateAsync(id, dto);
+            if (product == null)
+                return NotFound(new { message = "Product not found." });
 
             return Ok(product);
         }
 
-       
+        /// <summary>
+        /// Delete a product (Admin only)
+        /// </summary>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int id)
         {
-            var product = await _db.Products.FindAsync(id);
-            if (product == null)
-                return NotFound();
+            var deleted = await _productService.DeleteAsync(id);
+            if (!deleted)
+                return NotFound(new { message = "Product not found." });
 
-            _db.Products.Remove(product);
-            await _db.SaveChangesAsync();
-
-            return NoContent(); 
+            return NoContent();
         }
     }
 }
