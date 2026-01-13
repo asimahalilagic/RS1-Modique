@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{14861334-A1D0-4C13-9CDF-7E38AB14D965}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modique.API", "Modique.API\Modique.API.csproj", "{B03E0C7B-2D0C-40D3-9E7B-E8FA39EB15ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modique.API", "src\Modique.API\Modique.API.csproj", "{B03E0C7B-2D0C-40D3-9E7B-E8FA39EB15ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modique.Application", "Modique.Application\Modique.Application.csproj", "{085EBA9C-F8C1-41AE-9283-60F20E6ABB5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modique.Application", "src\Modique.Application\Modique.Application.csproj", "{085EBA9C-F8C1-41AE-9283-60F20E6ABB5E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modique.Domain", "Modique.Domain\Modique.Domain.csproj", "{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modique.Domain", "src\Modique.Domain\Modique.Domain.csproj", "{467D0F73-21E1-4C99-9737-D5DEEEA00DF2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modique.Infrastructure", "src\Modique.Infrastructure\Modique.Infrastructure.csproj", "{874D40CE-9CA5-45EC-8A96-15A3F26018C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modique.Infrastructure", "Modique.Infrastructure\Modique.Infrastructure.csproj", "{874D40CE-9CA5-45EC-8A96-15A3F26018C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,9 +38,5 @@ Global
 		{874D40CE-9CA5-45EC-8A96-15A3F26018C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B03E0C7B-2D0C-40D3-9E7B-E8FA39EB15ED} = {14861334-A1D0-4C13-9CDF-7E38AB14D965}
-		{085EBA9C-F8C1-41AE-9283-60F20E6ABB5E} = {14861334-A1D0-4C13-9CDF-7E38AB14D965}
-		{467D0F73-21E1-4C99-9737-D5DEEEA00DF2} = {14861334-A1D0-4C13-9CDF-7E38AB14D965}
-		{874D40CE-9CA5-45EC-8A96-15A3F26018C7} = {14861334-A1D0-4C13-9CDF-7E38AB14D965}
 	EndGlobalSection
 EndGlobal
