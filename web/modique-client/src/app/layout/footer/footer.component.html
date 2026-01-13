@@ -1,0 +1,56 @@
+<div class="container-fluid bg-secondary text-dark mt-5 pt-5">
+  <div class="row px-xl-5 pt-5">
+    <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+      <a routerLink="/" class="d-lg-block">
+        <img src="assets/modique_logo.png" alt="Logo" style="height:80px;">
+      </a>
+      <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>modique&#64;info.com</p>
+    </div>
+    <div class="col-lg-8 col-md-12">
+      <div class="row">
+        <div class="col-md-4 mb-5">
+          <h5 class="font-weight-bold text-dark mb-4"></h5>
+          <div class="d-flex flex-column justify-content-start">
+            <a class="text-dark mb-2" routerLink="/"><i class="fa fa-angle-right mr-2"></i>Početna stranica</a>
+            <a class="text-dark mb-2" routerLink="/shop"><i class="fa fa-angle-right mr-2"></i>Trgovina</a>
+            <a class="text-dark mb-2" routerLink="/orders"><i class="fa fa-angle-right mr-2"></i>Detalji narudžbe</a>
+          </div>
+        </div>
+        <div class="col-md-4 mb-5">
+          <h5 class="font-weight-bold text-dark mb-4"></h5>
+          <div class="d-flex flex-column justify-content-start">
+            <a class="text-dark mb-2" routerLink="/cart"><i class="fa fa-angle-right mr-2"></i>Košarica</a>
+            <a class="text-dark mb-2" routerLink="/checkout"><i class="fa fa-angle-right mr-2"></i>Naplata</a>
+            <a class="text-dark" routerLink="/contact"><i class="fa fa-angle-right mr-2"></i>Kontaktiraj nas</a>
+          </div>
+        </div>
+        <div class="col-md-4 mb-5">
+          <h5 class="font-weight-bold text-dark mb-4">Novosti</h5>
+          <form (ngSubmit)="onSubmitNewsletter($event)">
+            <div class="form-group">
+              <input type="text" class="form-control border-0 py-4" placeholder="Vaše ime" 
+                     [(ngModel)]="newsletterName" name="name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control border-0 py-4" placeholder="Vaš E-mail"
+                     [(ngModel)]="newsletterEmail" name="email" required>
+            </div>
+            <div>
+              <button class="btn btn-primary btn-block border-0 py-3" type="submit">Pretplati se sad</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row border-top border-light mx-xl-5 py-4">
+    <div class="col-md-6 px-xl-0">
+      <p class="mb-md-0 text-center text-md-left text-dark">
+        &copy; <a class="text-dark font-weight-semi-bold" routerLink="/">Modique</a>. Sva prava zadržana.
+      </p>
+    </div>
+    <div class="col-md-6 px-xl-0 text-center text-md-right">
+      <img class="img-fluid" src="assets/img/payments.png" alt="">
+    </div>
+  </div>
+</div>

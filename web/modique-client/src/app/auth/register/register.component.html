@@ -1,0 +1,138 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow">
+        <div class="card-body p-4">
+          <h3 class="card-title text-center mb-4">Registracija</h3>
+          
+          <div *ngIf="error" class="alert alert-danger" role="alert">
+            {{ error }}
+          </div>
+
+          <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName" class="form-label">Ime</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="firstName"
+                  name="firstName"
+                  [(ngModel)]="registerRequest.firstName"
+                  required
+                  minlength="2"
+                  maxlength="50"
+                  #firstName="ngModel"
+                />
+                <div *ngIf="firstName.invalid && firstName.touched" class="text-danger small">
+                  Ime mora biti između 2 i 50 karaktera
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="lastName" class="form-label">Prezime</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lastName"
+                  name="lastName"
+                  [(ngModel)]="registerRequest.lastName"
+                  required
+                  minlength="2"
+                  maxlength="50"
+                  #lastName="ngModel"
+                />
+                <div *ngIf="lastName.invalid && lastName.touched" class="text-danger small">
+                  Prezime mora biti između 2 i 50 karaktera
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email adresa</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                [(ngModel)]="registerRequest.email"
+                required
+                email
+                #email="ngModel"
+              />
+              <div *ngIf="email.invalid && email.touched" class="text-danger small">
+                Validna email adresa je obavezna
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="role" class="form-label">Tip naloga</label>
+              <select
+                class="form-control"
+                id="role"
+                name="role"
+                [(ngModel)]="registerRequest.role"
+                required
+              >
+                <option value="User">Korisnik</option>
+                <option value="Admin">Administrator</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Lozinka</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                [(ngModel)]="registerRequest.password"
+                required
+                minlength="8"
+                #password="ngModel"
+              />
+              <small class="form-text text-muted">
+                Lozinka mora imati najmanje 8 karaktera i sadržavati najmanje jedan broj.
+              </small>
+              <div *ngIf="password.invalid && password.touched" class="text-danger small">
+                Lozinka mora imati najmanje 8 karaktera
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Potvrdi lozinku</label>
+              <input
+                type="password"
+                class="form-control"
+                id="confirmPassword"
+                name="confirmPassword"
+                [(ngModel)]="confirmPassword"
+                required
+                #confirmPasswordInput="ngModel"
+              />
+              <div *ngIf="registerRequest.password !== confirmPassword && confirmPasswordInput.touched" class="text-danger small">
+                Lozinke se ne poklapaju
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary w-100 mb-3"
+              [disabled]="registerForm.invalid || loading"
+            >
+              <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+              {{ loading ? 'Registracija...' : 'Registruj se' }}
+            </button>
+
+            <div class="text-center">
+              <p class="mb-0">
+                Već imate nalog?
+                <a routerLink="/auth/login" class="text-primary">Prijavite se ovdje</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

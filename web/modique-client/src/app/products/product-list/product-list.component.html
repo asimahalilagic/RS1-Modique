@@ -1,0 +1,155 @@
+<div class="container-fluid pt-5">
+  <div class="row px-xl-5">
+    <div class="col-lg-3 col-md-12">
+      <div class="border-bottom mb-4 pb-4">
+        <h5 class="font-weight-semi-bold mb-4">Filtriraj po cijeni</h5>
+        <form>
+          <div class="custom-control custom-checkbox mb-2">
+            <input type="checkbox" class="custom-control-input" id="price-all" 
+                   [checked]="selectedPriceRanges['all']"
+                   (change)="selectedPriceRanges['all'] = $any($event.target).checked; onPriceFilterChange()">
+            <label class="custom-control-label" for="price-all">Sve cijene</label>
+          </div>
+          <div class="custom-control custom-checkbox mb-2">
+            <input type="checkbox" class="custom-control-input" id="price-1"
+                   [checked]="selectedPriceRanges['0-100']"
+                   (change)="selectedPriceRanges['0-100'] = $any($event.target).checked; onPriceFilterChange()">
+            <label class="custom-control-label" for="price-1">0 - 100 KM</label>
+          </div>
+          <div class="custom-control custom-checkbox mb-2">
+            <input type="checkbox" class="custom-control-input" id="price-2"
+                   [checked]="selectedPriceRanges['100-200']"
+                   (change)="selectedPriceRanges['100-200'] = $any($event.target).checked; onPriceFilterChange()">
+            <label class="custom-control-label" for="price-2">100 - 200 KM</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="price-3"
+                   [checked]="selectedPriceRanges['200+']"
+                   (change)="selectedPriceRanges['200+'] = $any($event.target).checked; onPriceFilterChange()">
+            <label class="custom-control-label" for="price-3">200+ KM</label>
+          </div>
+        </form>
+      </div>
+      
+      <div class="border-bottom mb-4 pb-4">
+        <h5 class="font-weight-semi-bold mb-4">Filtriraj po boji</h5>
+        <form>
+          <div class="custom-control custom-checkbox mb-2">
+            <input type="checkbox" class="custom-control-input" id="color-all"
+                   [checked]="selectedColors['all']"
+                   (change)="selectedColors['all'] = $any($event.target).checked; onColorFilterChange()">
+            <label class="custom-control-label" for="color-all">Sve boje</label>
+          </div>
+          <div class="custom-control custom-checkbox mb-2">
+            <input type="checkbox" class="custom-control-input" id="color-1"
+                   [checked]="selectedColors['crna']"
+                   (change)="selectedColors['crna'] = $any($event.target).checked; onColorFilterChange()">
+            <label class="custom-control-label" for="color-1">Crna</label>
+          </div>
+          <div class="custom-control custom-checkbox mb-2">
+            <input type="checkbox" class="custom-control-input" id="color-2"
+                   [checked]="selectedColors['bijela']"
+                   (change)="selectedColors['bijela'] = $any($event.target).checked; onColorFilterChange()">
+            <label class="custom-control-label" for="color-2">Bijela</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="color-3"
+                   [checked]="selectedColors['plava']"
+                   (change)="selectedColors['plava'] = $any($event.target).checked; onColorFilterChange()">
+            <label class="custom-control-label" for="color-3">Plava</label>
+          </div>
+        </form>
+      </div>
+      
+      <div class="mb-5">
+        <h5 class="font-weight-semi-bold mb-4">Filtriraj po veličini</h5>
+        <form>
+          <div class="custom-control custom-checkbox mb-2">
+            <input type="checkbox" class="custom-control-input" id="size-all"
+                   [checked]="selectedSizes['all']"
+                   (change)="selectedSizes['all'] = $any($event.target).checked; onSizeFilterChange()">
+            <label class="custom-control-label" for="size-all">Sve veličine</label>
+          </div>
+          <div class="custom-control custom-checkbox mb-2">
+            <input type="checkbox" class="custom-control-input" id="size-1"
+                   [checked]="selectedSizes['S']"
+                   (change)="selectedSizes['S'] = $any($event.target).checked; onSizeFilterChange()">
+            <label class="custom-control-label" for="size-1">S</label>
+          </div>
+          <div class="custom-control custom-checkbox mb-2">
+            <input type="checkbox" class="custom-control-input" id="size-2"
+                   [checked]="selectedSizes['M']"
+                   (change)="selectedSizes['M'] = $any($event.target).checked; onSizeFilterChange()">
+            <label class="custom-control-label" for="size-2">M</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="size-3"
+                   [checked]="selectedSizes['L']"
+                   (change)="selectedSizes['L'] = $any($event.target).checked; onSizeFilterChange()">
+            <label class="custom-control-label" for="size-3">L</label>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-lg-9 col-md-12">
+      <div class="row pb-3">
+        <div class="col-12 pb-1">
+          <div class="d-flex align-items-center justify-content-between mb-4">
+            <form class="flex-grow-1 mr-4">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Traži po nazivu"
+                       [value]="searchQuery" (input)="searchQuery = $any($event.target).value; onSearchChange()">
+                <div class="input-group-append">
+                  <span class="input-group-text bg-transparent text-primary">
+                    <i class="fa fa-search"></i>
+                  </span>
+                </div>
+              </div>
+            </form>
+            <div class="dropdown ml-4">
+              <button class="btn border dropdown-toggle" type="button" id="triggerId" 
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sortiraj po
+              </button>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
+                <a class="dropdown-item" href="#" (click)="sortBy = 'newest'; onSortChange(); $event.preventDefault()">
+                  Posljednje dodano
+                </a>
+                <a class="dropdown-item" href="#" (click)="sortBy = 'popular'; onSortChange(); $event.preventDefault()">
+                  Popularnost
+                </a>
+                <a class="dropdown-item" href="#" (click)="sortBy = 'rating'; onSortChange(); $event.preventDefault()">
+                  Najbolje ocijenjeni
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 pb-1" *ngFor="let product of products">
+          <app-product-card 
+            [product]="product"
+            [isFavorite]="isFavorite(product.productId)"
+            (addToCart)="onAddToCart($event)"
+            (toggleFavorite)="onToggleFavorite($event)">
+          </app-product-card>
+        </div>
+
+        <div class="col-12 text-center py-4" *ngIf="isLoading">
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Učitavanje...</span>
+          </div>
+        </div>
+
+        <div class="col-12 text-center py-4" *ngIf="hasNextPage && !isLoading">
+          <button class="btn btn-primary" (click)="loadMore()">Učitaj više</button>
+        </div>
+
+        <div class="col-12 text-center py-5" *ngIf="products.length === 0 && !isLoading">
+          <p class="text-muted">Nema proizvoda za prikaz.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

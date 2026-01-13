@@ -14,7 +14,3 @@ public class LoginRequestDto
     [RegularExpression(@"^(User|Admin)?$", ErrorMessage = "Role must be either 'User' or 'Admin' if provided")]
     public string? Role { get; set; }
 }
-
-
-
-

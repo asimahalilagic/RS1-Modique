@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row bg-secondary py-2 px-xl-5">
+    <div class="col-lg-6 d-none d-lg-block">
+      <div class="d-inline-flex align-items-center">
+        <a class="text-dark" routerLink="/faq">Često postavljena pitanja</a>
+        <span class="text-muted px-2">|</span>
+        <a class="text-dark" routerLink="/help">Pomoć</a>
+        <span class="text-muted px-2">|</span>
+        <a class="text-dark" routerLink="/support">Podrška</a>
+      </div>
+    </div>
+    <div class="col-lg-6 text-center text-lg-right">
+      <div class="d-inline-flex align-items-center">
+        <a class="text-dark px-2" href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a class="text-dark px-2" href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a class="text-dark px-2" href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a class="text-dark px-2" href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a class="text-dark pl-2" href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="row align-items-center py-3 px-xl-5">
+    <div class="col-lg-3 col-6">
+      <a routerLink="/" class="text-decoration-none">
+        <img src="assets/modique_logo.png" alt="Modique Logo" class="img-fluid" style="max-height:90px; height:auto;">
+      </a>
+    </div>
+    <div class="col-lg-6 col-12 col-md-6 text-left mt-2 mt-md-0">
+      <form (ngSubmit)="onSearch($event)">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Traži proizvode" #searchInput>
+          <div class="input-group-append">
+            <button type="submit" class="input-group-text bg-transparent text-primary border-0">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-3 col-6 text-right mt-2 mt-md-0">
+      <a routerLink="/wishlist" class="btn border">
+        <i class="fas fa-heart text-primary"></i>
+        <span class="badge" *ngIf="wishlistCount > 0">{{ wishlistCount }}</span>
+      </a>
+      <a routerLink="/cart" class="btn border">
+        <i class="fas fa-shopping-cart text-primary"></i>
+        <span class="badge" *ngIf="cartCount > 0">{{ cartCount }}</span>
+      </a>
+    </div>
+  </div>
+</div>

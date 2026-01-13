@@ -31,22 +31,19 @@ public class AuthService : IAuthService
 
     public async Task<AuthResponseDto> RegisterAsync(RegisterRequestDto request)
     {
-        // Check if email already exists
         if (await _db.Users.AnyAsync(u => u.Email == request.Email.ToLower()))
         {
             _logger.LogWarning("Registration attempt with existing email: {Email}", request.Email);
             throw new InvalidOperationException("Email already exists.");
         }
 
-        // Determine role based on request
         string roleName = request.Role?.ToLower() switch
         {
             "admin" => "Administrator",
             "user" => "Customer",
-            _ => "Customer" // Default to Customer if not specified
+            _ => "Customer"
         };
 
-        // Find role
         var userRole = await _db.Roles.FirstOrDefaultAsync(r => r.Name == roleName);
         if (userRole == null)
         {
@@ -54,11 +51,9 @@ public class AuthService : IAuthService
             throw new InvalidOperationException($"System configuration error: Role '{roleName}' not found.");
         }
 
-        // Generate password salt and hash
         string passwordSalt = BCrypt.Net.BCrypt.GenerateSalt();
         string passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password, passwordSalt);
 
-        // Create new user
         var user = new User
         {
             FirstName = request.FirstName,
@@ -74,12 +69,10 @@ public class AuthService : IAuthService
         _db.Users.Add(user);
         await _db.SaveChangesAsync();
 
-        // Load role for response
         await _db.Entry(user).Reference(u => u.Role).LoadAsync();
 
         _logger.LogInformation("New user registered: {Email} with role: {Role}", user.Email, userRole.Name);
 
-        // Generate token
         var token = GenerateJwtToken(user);
         var expiresAt = DateTime.UtcNow.AddHours(6);
 
@@ -100,7 +93,6 @@ public class AuthService : IAuthService
 
     public async Task<AuthResponseDto> LoginAsync(LoginRequestDto request)
     {
-        // Find user with role
         var user = await _db.Users
             .Include(u => u.Role)
             .FirstOrDefaultAsync(u => u.Email == request.Email.ToLower());
@@ -111,14 +103,12 @@ public class AuthService : IAuthService
             throw new UnauthorizedAccessException("Invalid credentials.");
         }
 
-        // Check if user is active
         if (!user.Active)
         {
             _logger.LogWarning("Login attempt for inactive user: {Email}", request.Email);
             throw new UnauthorizedAccessException("Account is inactive.");
         }
 
-        // If role is specified, validate it matches user's role
         if (!string.IsNullOrEmpty(request.Role))
         {
             string? expectedRole = request.Role.ToLower() switch
@@ -136,7 +126,6 @@ public class AuthService : IAuthService
             }
         }
 
-        // Verify password (BCrypt handles salt automatically from hash)
         var isPasswordValid = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash);
         if (!isPasswordValid)
         {
@@ -144,7 +133,6 @@ public class AuthService : IAuthService
             throw new UnauthorizedAccessException("Invalid credentials.");
         }
 
-        // Generate JWT token
         var token = GenerateJwtToken(user);
         var expiresAt = DateTime.UtcNow.AddHours(6);
 
@@ -175,7 +163,6 @@ public class AuthService : IAuthService
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
 
-        // Add role claim if exists
         if (!string.IsNullOrEmpty(user.Role?.Name))
         {
             claims.Add(new Claim(ClaimTypes.Role, user.Role.Name));
@@ -223,7 +210,6 @@ public class AuthService : IAuthService
         if (user == null)
             throw new KeyNotFoundException("User not found.");
 
-        // Verify current password
         var isCurrentPasswordValid = BCrypt.Net.BCrypt.Verify(request.CurrentPassword, user.PasswordHash);
         if (!isCurrentPasswordValid)
         {
@@ -231,7 +217,6 @@ public class AuthService : IAuthService
             throw new UnauthorizedAccessException("Current password is incorrect.");
         }
 
-        // Generate new password salt and hash
         string passwordSalt = BCrypt.Net.BCrypt.GenerateSalt();
         user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.NewPassword, passwordSalt);
         user.PasswordSalt = passwordSalt;
@@ -241,7 +226,3 @@ public class AuthService : IAuthService
         return true;
     }
 }
-
-
-
-

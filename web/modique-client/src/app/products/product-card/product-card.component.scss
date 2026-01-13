@@ -1,0 +1,25 @@
+.product-item {
+  .product-img {
+    img {
+      transition: 0.5s;
+    }
+  }
+
+  &:hover .product-img img {
+    transform: scale(1.2);
+  }
+
+  .btn:hover {
+    color: #D19C97 !important;
+  }
+}
+
+.favorite-btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  z-index: 10;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.95);
+  }
+}

@@ -16,26 +16,20 @@ public class AuthenticationMiddleware
 
     public async Task InvokeAsync(HttpContext context)
     {
-        // Skip authentication middleware for public endpoints
         if (IsPublicEndpoint(context.Request.Path))
         {
             await _next(context);
             return;
         }
 
-        // Check if user is authenticated (JWT middleware should have already validated the token)
         if (context.User?.Identity?.IsAuthenticated == true)
         {
-            // Extract user information from claims for logging/debugging
             var userId = context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var email = context.User.FindFirst(ClaimTypes.Email)?.Value;
             var role = context.User.FindFirst(ClaimTypes.Role)?.Value;
 
             _logger.LogDebug("Authenticated request: UserId={UserId}, Email={Email}, Role={Role}, Path={Path}",
                 userId, email, role, context.Request.Path);
-
-            // You can add additional authorization checks here if needed
-            // For example, check if user is active, check role-based access, etc.
         }
 
         await _next(context);
