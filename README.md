@@ -1,8 +1,8 @@
-# Modique - E-commerce Platform
+ Modique - E-commerce Platform
 
 E-commerce platforma sa Angular frontend-om i .NET backend-om.
 
-## 📁 Struktura Projekta
+ Struktura Projekta
 
 ```
 rs1-2025-26-Modique/
@@ -20,7 +20,7 @@ rs1-2025-26-Modique/
     └── package.json          # Dependencies
 ```
 
-## ⚡ Brzo Pokretanje
+ Brzo Pokretanje
 
 ### Backend
 
@@ -32,7 +32,7 @@ dotnet run --project Modique.API
 
 Backend API će biti dostupan na: `https://localhost:7034`
 
-### Frontend
+Frontend
 
 ```bash
 cd Modique.Frontend
@@ -42,34 +42,34 @@ npm start
 
 Frontend aplikacija će se otvoriti na: `http://localhost:4200`
 
-## 🔐 Autentifikacija
+ Autentifikacija
 
 - **Email**: `admin@modique.local`
 - **Lozinka**: `Admin123!`
 
-## 📋 Funkcionalnosti
+ Funkcionalnosti
 
-✅ **Proizvodi** - Pregled, pretraga, filtriranje  
-✅ **Kategorije** - Organizacija proizvoda  
-✅ **Košarica** - Upravljanje narudžbama  
-✅ **Omiljeno** - Lista omiljenih proizvoda  
-✅ **Autentifikacija** - Prijava i registracija  
-✅ **Responsive Design** - Mobilni, tablet, desktop
+ **Proizvodi** - Pregled, pretraga, filtriranje  
+ **Kategorije** - Organizacija proizvoda  
+ **Košarica** - Upravljanje narudžbama  
+ **Omiljeno** - Lista omiljenih proizvoda  
+ **Autentifikacija** - Prijava i registracija  
 
-## 🛠️ Tehnologije
 
-### Backend
+ Tehnologije
+
+ Backend
 - .NET 9.0
 - Entity Framework Core
 - JWT Authentication
 
-### Frontend
+ Frontend
 - Angular 19
 - Bootstrap 5
 - Font Awesome
 - SCSS
 
-## 📝 Napomene
+ Napomene
 
 - Backend API mora biti pokrenut prije pokretanja frontend-a
 - CORS je konfigurisan za `http://localhost:4200`
