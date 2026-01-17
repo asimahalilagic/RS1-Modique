@@ -19,7 +19,7 @@ namespace Modique.Controllers
         }
 
         /// <summary>
-        /// Get all products with pagination
+        /// Get all products with pagination (only active products)
         /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 20)
@@ -28,6 +28,20 @@ namespace Modique.Controllers
             if (pageSize < 1 || pageSize > 100) pageSize = 20;
 
             var result = await _productService.GetAllAsync(page, pageSize);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Get all products for admin panel (includes inactive products)
+        /// </summary>
+        [HttpGet("admin")]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> GetAllForAdmin([FromQuery] int page = 1, [FromQuery] int pageSize = 20)
+        {
+            if (page < 1) page = 1;
+            if (pageSize < 1 || pageSize > 100) pageSize = 100;
+
+            var result = await _productService.GetAllForAdminAsync(page, pageSize);
             return Ok(result);
         }
 

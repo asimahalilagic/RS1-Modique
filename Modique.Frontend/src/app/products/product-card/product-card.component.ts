@@ -25,6 +25,10 @@ export class ProductCardComponent {
   }
 
   getImageUrl(): string {
+    if (this.product.images && this.product.images.length > 0) {
+      const mainImage = this.product.images.find(img => img.isMain) || this.product.images[0];
+      return mainImage.imageUrl;
+    }
     return `/assets/img/${this.product.name.toLowerCase().replace(/\s+/g, '')}.jpg`;
   }
 }

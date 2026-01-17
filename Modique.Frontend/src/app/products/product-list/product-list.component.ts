@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, HostListener, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ProductService, Product, PagedResult } from '../../services/product.service';
 import { ProductCardComponent } from '../product-card/product-card.component';
@@ -12,7 +12,9 @@ import { takeUntil } from 'rxjs/operators';
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
 })
-export class ProductListComponent implements OnInit, OnDestroy {
+export class ProductListComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild('scrollTrigger', { static: false }) scrollTrigger!: ElementRef;
+
   products: Product[] = [];
   favorites: Set<number> = new Set();
   
@@ -25,6 +27,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   searchQuery = '';
   searchSubject = new Subject<string>();
   private destroy$ = new Subject<void>();
+  private observer?: IntersectionObserver;
   
   selectedPriceRanges: { [key: string]: boolean } = {};
   selectedColors: { [key: string]: boolean } = {};
@@ -51,9 +54,48 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.loadProducts();
   }
 
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.setupIntersectionObserver();
+    }
+  }
+
   ngOnDestroy(): void {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  setupIntersectionObserver(): void {
+    if (!isPlatformBrowser(this.platformId) || !('IntersectionObserver' in window)) {
+      return;
+    }
+
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+
+    const options = {
+      root: null,
+      rootMargin: '200px',
+      threshold: 0.1
+    };
+
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && this.hasNextPage && !this.isLoading) {
+          this.loadMore();
+        }
+      });
+    }, options);
+
+    setTimeout(() => {
+      if (this.scrollTrigger?.nativeElement) {
+        this.observer?.observe(this.scrollTrigger.nativeElement);
+      }
+    }, 0);
   }
 
   loadProducts(): void {
@@ -86,21 +128,21 @@ export class ProductListComponent implements OnInit, OnDestroy {
   resetAndLoadProducts(): void {
     this.currentPage = 1;
     this.products = [];
+    if (this.observer) {
+      this.observer.disconnect();
+    }
     this.loadProducts();
+    if (isPlatformBrowser(this.platformId)) {
+      setTimeout(() => {
+        this.setupIntersectionObserver();
+      }, 100);
+    }
   }
 
   loadMore(): void {
     if (this.hasNextPage && !this.isLoading) {
       this.currentPage++;
       this.loadProducts();
-    }
-  }
-
-  @HostListener('window:scroll', ['$event'])
-  onScroll(): void {
-    if (!isPlatformBrowser(this.platformId)) return;
-    if (window.innerHeight + window.scrollY >= document.documentElement.offsetHeight - 500) {
-      this.loadMore();
     }
   }
 
@@ -152,6 +194,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   getProductImageUrl(product: Product): string {
+    if (product.images && product.images.length > 0) {
+      const mainImage = product.images.find(img => img.isMain) || product.images[0];
+      return mainImage.imageUrl;
+    }
     return `/assets/img/${product.name.toLowerCase().replace(/\s+/g, '')}.jpg`;
   }
 

@@ -1,5 +1,13 @@
 namespace Modique.Application.DTOs.Products;
 
+public class ProductImageDto
+{
+    public int ProductImageId { get; set; }
+    public string ImageUrl { get; set; } = string.Empty;
+    public int Order { get; set; }
+    public bool IsMain { get; set; }
+}
+
 public class ProductDto
 {
     public int ProductId { get; set; }
@@ -12,6 +20,7 @@ public class ProductDto
     public string? CategoryName { get; set; }
     public int BrandId { get; set; }
     public string? BrandName { get; set; }
+    public List<ProductImageDto> Images { get; set; } = new();
 }
 
 public class CreateProductDto
@@ -22,6 +31,7 @@ public class CreateProductDto
     public int CategoryId { get; set; }
     public int BrandId { get; set; }
     public bool IsActive { get; set; } = true;
+    public List<string> ImageUrls { get; set; } = new();
 }
 
 public class UpdateProductDto
@@ -32,6 +42,7 @@ public class UpdateProductDto
     public int CategoryId { get; set; }
     public int BrandId { get; set; }
     public bool IsActive { get; set; }
+    public List<string> ImageUrls { get; set; } = new();
 }
 
 

@@ -1,5 +1,5 @@
 <div class="card product-item border-0 mb-4">
-  <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+  <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0" style="cursor: pointer;" [routerLink]="['/products', product.productId]">
     <img class="img-fluid w-100" [src]="getImageUrl()" [alt]="product.name">
     <button 
       class="btn btn-sm position-absolute top-0 end-0 m-2 favorite-btn" 

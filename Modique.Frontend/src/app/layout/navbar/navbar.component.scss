@@ -1,0 +1,31 @@
+.nav-item.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  min-width: 160px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #212529;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out;
+
+  &:hover {
+    background-color: #f8f9fa;
+    color: #212529;
+  }
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}

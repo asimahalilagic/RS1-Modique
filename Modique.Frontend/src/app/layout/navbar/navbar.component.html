@@ -42,16 +42,20 @@
             <a routerLink="/shop" class="nav-item nav-link" [class.active]="isActive('/shop') || isActive('/products')">Trgovina</a>
             <a routerLink="/orders" class="nav-item nav-link" [class.active]="isActive('/orders')">Detalji narudžbe</a>
             <div class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle">Kupovina</a>
-              <div class="dropdown-menu rounded-0 m-0">
-                <a routerLink="/cart" class="dropdown-item">Košarica</a>
-                <a routerLink="/checkout" class="dropdown-item">Naplata</a>
+              <a href="#" class="nav-link dropdown-toggle" (click)="togglePurchase(); $event.preventDefault()">
+                Kupovina
+                <i class="fa" [class.fa-angle-down]="!purchaseOpen" [class.fa-angle-up]="purchaseOpen"></i>
+              </a>
+              <div class="dropdown-menu rounded-0 m-0" [style.display]="purchaseOpen ? 'block' : 'none'">
+                <a routerLink="/cart" class="dropdown-item" (click)="purchaseOpen = false">Košara</a>
+                <a routerLink="/wishlist" class="dropdown-item" (click)="purchaseOpen = false">Favoriti</a>
               </div>
             </div>
             <a routerLink="/contact" class="nav-item nav-link" [class.active]="isActive('/contact')">Kontakt</a>
           </div>
           <div class="navbar-nav ml-auto py-0">
-            <a routerLink="/auth/login" class="nav-item nav-link" [class.active]="isActive('/auth/login')">Prijava</a>
+            <a *ngIf="!isAuthenticated" routerLink="/auth/login" class="nav-item nav-link" [class.active]="isActive('/auth/login')">Prijava</a>
+            <a *ngIf="isAuthenticated" (click)="logout()" class="nav-item nav-link" style="cursor: pointer;">Odjava</a>
           </div>
         </div>
       </nav>

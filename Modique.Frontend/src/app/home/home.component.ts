@@ -87,7 +87,6 @@ export class HomeComponent implements OnInit {
         this.isLoading = false;
       },
       error: (error) => {
-        console.error('Error loading popular products:', error);
         this.isLoading = false;
       }
     });
@@ -99,7 +98,6 @@ export class HomeComponent implements OnInit {
         this.latestProducts = result.items;
       },
       error: (error) => {
-        console.error('Error loading latest products:', error);
       }
     });
   }
@@ -142,7 +140,6 @@ export class HomeComponent implements OnInit {
   onSubmitNewsletter(event: Event): void {
     event.preventDefault();
     if (this.newsletterEmail) {
-      console.log('Newsletter subscription:', this.newsletterEmail);
       this.newsletterEmail = '';
     }
   }

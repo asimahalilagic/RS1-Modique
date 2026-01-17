@@ -1,8 +1,10 @@
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Modique.API.Extensions;
 using Modique.API.Middleware;
 using Modique.Application.Interfaces;
 using Modique.Application.Mappings;
@@ -12,10 +14,8 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container
-builder.Services.AddControllers();
-
-// Swagger + API explorer with JWT support
+builder.Services.AddControllers()
+    .AddApplicationPart(typeof(Program).Assembly);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -26,7 +26,6 @@ builder.Services.AddSwaggerGen(c =>
         Description = "API za Modique e-commerce aplikaciju"
     });
 
-    // JWT Authentication setup for Swagger
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "JWT Authorization header using the Bearer scheme. Enter 'Bearer' [space] and then your token in the text input below.",
@@ -50,24 +49,19 @@ builder.Services.AddSwaggerGen(c =>
             Array.Empty<string>()
         }
     });
+
+    c.CustomSchemaIds(type => type.FullName);
 });
 
-// AutoMapper
 builder.Services.AddAutoMapper(typeof(MappingProfile));
-
-// FluentValidation (using deprecated but working method for now)
 builder.Services.AddFluentValidation(fv => 
     fv.RegisterValidatorsFromAssemblyContaining<Program>());
 
-// Application Services
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IProductService, ProductService>();
-
-// Database
 builder.Services.AddDbContext<ModiqueDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -86,7 +80,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
-// CORS
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
@@ -102,33 +95,42 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Modique API v1");
-        c.RoutePrefix = string.Empty; // Set Swagger UI at the app's root
+        c.RoutePrefix = string.Empty;
     });
 }
 
-// Global Exception Handler (must be first)
 app.UseMiddleware<ExceptionHandlingMiddleware>();
-
-// Use CORS BEFORE Authentication & Authorization
 app.UseCors(MyAllowSpecificOrigins);
 
-app.UseHttpsRedirection();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 
-// Authentication & Authorization (order matters!)
+app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
-
-// Custom Authentication Middleware (for additional logging/validation)
 app.UseMiddleware<AuthenticationMiddleware>();
-
-// Register Controllers
 app.MapControllers();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dbContext = services.GetRequiredService<ModiqueDbContext>();
+    try
+    {
+        await DbSeeder.SeedDataAsync(dbContext);
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while seeding the database.");
+    }
+}
 
 app.Run();

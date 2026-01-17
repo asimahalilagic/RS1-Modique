@@ -32,9 +32,17 @@ export class LoginComponent {
     this.loading = true;
 
     this.authService.login(this.loginRequest).subscribe({
-      next: () => {
-        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/products';
-        this.router.navigate([returnUrl]);
+      next: (response) => {
+        const user = response.user;
+        const returnUrl = this.route.snapshot.queryParams['returnUrl'];
+        
+        if (returnUrl) {
+          this.router.navigate([returnUrl]);
+        } else if (user?.role === 'Administrator') {
+          this.router.navigate(['/admin/products']);
+        } else {
+          this.router.navigate(['/products']);
+        }
       },
       error: (err) => {
         this.error = err.error?.message || 'Neuspješna prijava. Provjerite vaše podatke.';

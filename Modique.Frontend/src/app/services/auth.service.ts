@@ -8,7 +8,7 @@ import { TokenService } from '../core/token.service';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://localhost:7034/api/auth';
+  private apiUrl = 'http://localhost:5097/api/auth';
 
   constructor(
     private http: HttpClient,
@@ -20,6 +20,9 @@ export class AuthService {
       tap(response => {
         this.tokenService.setToken(response.token);
         this.tokenService.setUser(response.user);
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new CustomEvent('authStatusChanged'));
+        }
       })
     );
   }
@@ -29,6 +32,9 @@ export class AuthService {
       tap(response => {
         this.tokenService.setToken(response.token);
         this.tokenService.setUser(response.user);
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new CustomEvent('authStatusChanged'));
+        }
       })
     );
   }

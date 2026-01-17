@@ -24,6 +24,7 @@ public class ProductService : IProductService
         var query = _db.Products
             .Include(p => p.Category)
             .Include(p => p.Brand)
+            .Include(p => p.Images)
             .Where(p => p.IsActive)
             .AsQueryable();
 
@@ -33,24 +34,78 @@ public class ProductService : IProductService
             .OrderBy(p => p.Name)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
-            .Select(p => new ProductDto
-            {
-                ProductId = p.ProductId,
-                Name = p.Name,
-                Description = p.Description,
-                Price = p.Price,
-                CreatedAt = p.CreatedAt,
-                IsActive = p.IsActive,
-                CategoryId = p.CategoryId,
-                CategoryName = p.Category != null ? p.Category.Name : null,
-                BrandId = p.BrandId,
-                BrandName = p.Brand != null ? p.Brand.Name : null
-            })
             .ToListAsync();
+
+        var productDtos = products.Select(p => new ProductDto
+        {
+            ProductId = p.ProductId,
+            Name = p.Name,
+            Description = p.Description,
+            Price = p.Price,
+            CreatedAt = p.CreatedAt,
+            IsActive = p.IsActive,
+            CategoryId = p.CategoryId,
+            CategoryName = p.Category?.Name,
+            BrandId = p.BrandId,
+            BrandName = p.Brand?.Name,
+            Images = p.Images.OrderBy(i => i.Order).Select(i => new DTOs.Products.ProductImageDto
+            {
+                ProductImageId = i.ProductImageId,
+                ImageUrl = i.ImageUrl,
+                Order = i.Order,
+                IsMain = i.IsMain
+            }).ToList()
+        }).ToList();
 
         return new PagedResult<ProductDto>
         {
-            Items = products,
+            Items = productDtos,
+            TotalCount = totalCount,
+            Page = page,
+            PageSize = pageSize
+        };
+    }
+
+    public async Task<PagedResult<ProductDto>> GetAllForAdminAsync(int page = 1, int pageSize = 20)
+    {
+        var query = _db.Products
+            .Include(p => p.Category)
+            .Include(p => p.Brand)
+            .Include(p => p.Images)
+            .AsQueryable();
+
+        var totalCount = await query.CountAsync();
+
+        var products = await query
+            .OrderBy(p => p.Name)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+        var productDtos = products.Select(p => new ProductDto
+        {
+            ProductId = p.ProductId,
+            Name = p.Name,
+            Description = p.Description,
+            Price = p.Price,
+            CreatedAt = p.CreatedAt,
+            IsActive = p.IsActive,
+            CategoryId = p.CategoryId,
+            CategoryName = p.Category?.Name,
+            BrandId = p.BrandId,
+            BrandName = p.Brand?.Name,
+            Images = p.Images.OrderBy(i => i.Order).Select(i => new DTOs.Products.ProductImageDto
+            {
+                ProductImageId = i.ProductImageId,
+                ImageUrl = i.ImageUrl,
+                Order = i.Order,
+                IsMain = i.IsMain
+            }).ToList()
+        }).ToList();
+
+        return new PagedResult<ProductDto>
+        {
+            Items = productDtos,
             TotalCount = totalCount,
             Page = page,
             PageSize = pageSize
@@ -62,6 +117,7 @@ public class ProductService : IProductService
         var product = await _db.Products
             .Include(p => p.Category)
             .Include(p => p.Brand)
+            .Include(p => p.Images)
             .FirstOrDefaultAsync(p => p.ProductId == id);
 
         if (product == null)
@@ -78,7 +134,14 @@ public class ProductService : IProductService
             CategoryId = product.CategoryId,
             CategoryName = product.Category?.Name,
             BrandId = product.BrandId,
-            BrandName = product.Brand?.Name
+            BrandName = product.Brand?.Name,
+            Images = product.Images.OrderBy(i => i.Order).Select(i => new DTOs.Products.ProductImageDto
+            {
+                ProductImageId = i.ProductImageId,
+                ImageUrl = i.ImageUrl,
+                Order = i.Order,
+                IsMain = i.IsMain
+            }).ToList()
         };
     }
 
@@ -98,6 +161,22 @@ public class ProductService : IProductService
         _db.Products.Add(product);
         await _db.SaveChangesAsync();
 
+        if (dto.ImageUrls != null && dto.ImageUrls.Any())
+        {
+            for (int i = 0; i < dto.ImageUrls.Count; i++)
+            {
+                var image = new Domain.Entities.ProductImage
+                {
+                    ProductId = product.ProductId,
+                    ImageUrl = dto.ImageUrls[i],
+                    Order = i,
+                    IsMain = i == 0
+                };
+                _db.ProductImages.Add(image);
+            }
+            await _db.SaveChangesAsync();
+        }
+
         _logger.LogInformation("Product created: {ProductId} - {ProductName}", product.ProductId, product.Name);
 
         return await GetByIdAsync(product.ProductId) ?? throw new InvalidOperationException("Failed to retrieve created product");
@@ -105,7 +184,9 @@ public class ProductService : IProductService
 
     public async Task<ProductDto?> UpdateAsync(int id, UpdateProductDto dto)
     {
-        var product = await _db.Products.FindAsync(id);
+        var product = await _db.Products
+            .Include(p => p.Images)
+            .FirstOrDefaultAsync(p => p.ProductId == id);
         if (product == null)
             return null;
 
@@ -115,6 +196,24 @@ public class ProductService : IProductService
         product.CategoryId = dto.CategoryId;
         product.BrandId = dto.BrandId;
         product.IsActive = dto.IsActive;
+
+        if (dto.ImageUrls != null && dto.ImageUrls.Any())
+        {
+            var existingImages = product.Images.ToList();
+            _db.ProductImages.RemoveRange(existingImages);
+
+            for (int i = 0; i < dto.ImageUrls.Count; i++)
+            {
+                var image = new Domain.Entities.ProductImage
+                {
+                    ProductId = product.ProductId,
+                    ImageUrl = dto.ImageUrls[i],
+                    Order = i,
+                    IsMain = i == 0
+                };
+                _db.ProductImages.Add(image);
+            }
+        }
 
         await _db.SaveChangesAsync();
 

@@ -1,0 +1,285 @@
+<div class="container-fluid bg-secondary mb-5">
+  <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+    <h1 class="font-weight-semi-bold text-uppercase mb-3">Admin Panel</h1>
+    <div class="d-inline-flex">
+      <p class="m-0"><a routerLink="/" class="text-dark">Početna stranica</a></p>
+      <p class="m-0 px-2">-</p>
+      <p class="m-0"><a routerLink="/admin/products" class="text-dark">Admin Panel</a></p>
+      <p class="m-0 px-2">-</p>
+      <p class="m-0">{{ isEditMode ? 'Uredi proizvod' : 'Upravljanje proizvodima' }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid pt-5">
+  <div class="row px-xl-5">
+    <div class="col-12 mb-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Proizvodi</h2>
+        <button 
+          *ngIf="!isEditMode" 
+          class="btn btn-primary"
+          (click)="isEditMode = true; editingProductId = null; productForm = { name: '', description: '', price: 0, categoryId: 0, brandId: 0, isActive: true, imageUrls: [] }; imageUrls = ['']; imageFiles = ['']; errorMessage = ''; successMessage = ''">
+          Dodaj novi proizvod
+        </button>
+        <button 
+          *ngIf="isEditMode" 
+          class="btn btn-secondary"
+          (click)="cancelEdit()">
+          Otkaži
+        </button>
+      </div>
+    </div>
+
+    <div class="col-12" *ngIf="!isEditMode">
+      <div class="card border-0 shadow">
+        <div class="card-body">
+          <div *ngIf="isLoading" class="text-center py-5">
+            <div class="spinner-border text-primary" role="status">
+              <span class="sr-only">Učitavanje...</span>
+            </div>
+          </div>
+
+          <div *ngIf="errorMessage && !isLoading" class="alert alert-danger mb-3" role="alert">
+            {{ errorMessage }}
+          </div>
+
+          <div *ngIf="!isLoading && products.length === 0 && !errorMessage" class="text-center py-5">
+            <p class="text-muted">Nema proizvoda u bazi podataka.</p>
+          </div>
+
+          <div *ngIf="!isLoading && products.length > 0" class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Naziv</th>
+                  <th>Cijena</th>
+                  <th>Kategorija</th>
+                  <th>Brend</th>
+                  <th>Status</th>
+                  <th>Akcije</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of products">
+                  <td>{{ product.productId }}</td>
+                  <td>{{ product.name }}</td>
+                  <td>{{ product.price }} KM</td>
+                  <td>{{ product.categoryName || 'N/A' }}</td>
+                  <td>{{ product.brandName || 'N/A' }}</td>
+                  <td>
+                    <span [class]="product.isActive ? 'badge badge-success' : 'badge badge-secondary'">
+                      {{ product.isActive ? 'Aktivan' : 'Neaktivan' }}
+                    </span>
+                  </td>
+                  <td>
+                    <button class="btn btn-sm btn-primary mr-2" (click)="editProduct(product.productId)">
+                      Uredi
+                    </button>
+                    <button class="btn btn-sm btn-danger" (click)="deleteProduct(product.productId)">
+                      Obriši
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8 offset-lg-2" *ngIf="isEditMode">
+      <div class="card border-0 shadow">
+        <div class="card-body p-5">
+          <h3 class="mb-4">{{ editingProductId ? 'Uredi proizvod' : 'Dodaj novi proizvod' }}</h3>
+
+          <div class="alert alert-danger" *ngIf="errorMessage" role="alert">
+            {{ errorMessage }}
+          </div>
+
+          <div class="alert alert-success" *ngIf="successMessage" role="alert">
+            {{ successMessage }}
+          </div>
+
+          <form (ngSubmit)="onSubmit()" #form="ngForm">
+            <div class="form-group mb-3">
+              <label for="name" class="font-weight-bold">Naziv proizvoda *</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="name" 
+                [(ngModel)]="productForm.name"
+                name="name"
+                required
+                placeholder="Unesite naziv proizvoda">
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="description" class="font-weight-bold">Opis</label>
+              <textarea 
+                class="form-control" 
+                id="description" 
+                rows="4"
+                [(ngModel)]="productForm.description"
+                name="description"
+                placeholder="Unesite opis proizvoda"></textarea>
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="price" class="font-weight-bold">Cijena (KM) *</label>
+              <input 
+                type="number" 
+                class="form-control" 
+                id="price" 
+                [(ngModel)]="productForm.price"
+                name="price"
+                step="0.01"
+                min="0.01"
+                required
+                placeholder="0.00">
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="categoryId" class="font-weight-bold">Kategorija *</label>
+                  <select 
+                    class="form-control" 
+                    id="categoryId"
+                    [(ngModel)]="productForm.categoryId"
+                    name="categoryId"
+                    required>
+                    <option value="0">-- Izaberite kategoriju --</option>
+                    <option *ngFor="let category of categories" [value]="category.categoryId">
+                      {{ category.name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label for="brandId" class="font-weight-bold">Brend *</label>
+                  <select 
+                    class="form-control" 
+                    id="brandId"
+                    [(ngModel)]="productForm.brandId"
+                    name="brandId"
+                    required>
+                    <option value="0">-- Izaberite brend --</option>
+                    <option *ngFor="let brand of brands" [value]="brand.brandId">
+                      {{ brand.name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mb-3">
+              <label class="font-weight-bold">Slike proizvoda</label>
+              
+              <div class="mb-3">
+                <input 
+                  type="file" 
+                  class="form-control-file" 
+                  accept="image/*"
+                  multiple
+                  (change)="onMultipleFilesSelected($event)">
+                <small class="form-text text-muted">
+                  Možete izabrati više slika odjednom (maksimalno 5MB po slici)
+                </small>
+              </div>
+
+              <div *ngFor="let url of imageUrls; let i = index" class="mb-3">
+                <div class="d-flex align-items-center">
+                  <div class="mr-3" style="width: 100px; height: 100px; overflow: hidden; border: 1px solid #ddd; border-radius: 4px;">
+                    <img 
+                      [src]="getImagePreview(i)" 
+                      alt="Preview"
+                      style="width: 100%; height: 100%; object-fit: cover;"
+                      *ngIf="getImagePreview(i)"
+                      onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23ddd\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'%23999\'%3ENo image%3C/text%3E%3C/svg%3E'">
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="input-group">
+                      <input 
+                        type="file" 
+                        class="form-control" 
+                        accept="image/*"
+                        (change)="onFileSelected($event, i)"
+                        [name]="'imageFile' + i">
+                      <div class="input-group-append">
+                        <button 
+                          type="button" 
+                          class="btn btn-outline-danger"
+                          (click)="removeImageUrl(i)"
+                          [disabled]="imageUrls.length === 1">
+                          Obriši
+                        </button>
+                      </div>
+                    </div>
+                    <small class="form-text text-muted">
+                      Ili unesite URL slike:
+                    </small>
+                    <input 
+                      type="text" 
+                      class="form-control mt-1" 
+                      [(ngModel)]="imageUrls[i]"
+                      [name]="'imageUrl' + i"
+                      placeholder="URL slike (opciono)"
+                      *ngIf="!isFile(i)">
+                  </div>
+                </div>
+              </div>
+
+              <button 
+                type="button" 
+                class="btn btn-sm btn-outline-primary mt-2"
+                (click)="addImageUrl()">
+                Dodaj još jednu sliku
+              </button>
+              <small class="form-text text-muted d-block mt-2">
+                Možete uploadovati slike sa računara ili unijeti URL-ove. Prva slika će biti glavna slika.
+              </small>
+            </div>
+
+            <div class="form-group mb-3">
+              <div class="form-check">
+                <input 
+                  class="form-check-input" 
+                  type="checkbox" 
+                  id="isActive"
+                  [(ngModel)]="productForm.isActive"
+                  name="isActive"
+                  [checked]="productForm.isActive">
+                <label class="form-check-label" for="isActive">
+                  Proizvod je aktivan
+                </label>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+              <button 
+                type="button" 
+                class="btn btn-secondary"
+                (click)="cancelEdit()">
+                Otkaži
+              </button>
+              <button 
+                type="submit" 
+                class="btn btn-primary px-4"
+                [disabled]="isSubmitting || isLoading || uploadingImages">
+                <span *ngIf="isSubmitting || uploadingImages">
+                  <span class="spinner-border spinner-border-sm mr-2" role="status"></span>
+                  {{ uploadingImages ? 'Uploadovanje slika...' : (editingProductId ? 'Ažuriranje...' : 'Dodavanje...') }}
+                </span>
+                <span *ngIf="!isSubmitting && !uploadingImages">{{ editingProductId ? 'Ažuriraj proizvod' : 'Dodaj proizvod' }}</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

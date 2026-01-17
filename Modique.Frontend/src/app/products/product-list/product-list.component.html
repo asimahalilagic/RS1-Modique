@@ -136,14 +136,12 @@
           </app-product-card>
         </div>
 
+        <div #scrollTrigger class="col-12" *ngIf="hasNextPage"></div>
+
         <div class="col-12 text-center py-4" *ngIf="isLoading">
           <div class="spinner-border text-primary" role="status">
             <span class="sr-only">Učitavanje...</span>
           </div>
-        </div>
-
-        <div class="col-12 text-center py-4" *ngIf="hasNextPage && !isLoading">
-          <button class="btn btn-primary" (click)="loadMore()">Učitaj više</button>
         </div>
 
         <div class="col-12 text-center py-5" *ngIf="products.length === 0 && !isLoading">
