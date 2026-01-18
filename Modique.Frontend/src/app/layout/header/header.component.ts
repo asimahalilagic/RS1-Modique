@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { ThemeService, Theme } from '../../services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -12,9 +13,11 @@ import { Router, RouterModule } from '@angular/router';
 export class HeaderComponent implements OnInit {
   cartCount = 0;
   wishlistCount = 0;
+  currentTheme: Theme = 'light';
 
   constructor(
     private router: Router,
+    private themeService: ThemeService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -22,7 +25,15 @@ export class HeaderComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       this.updateCartCount();
       this.updateWishlistCount();
+      this.currentTheme = this.themeService.getCurrentTheme();
+      this.themeService.theme$.subscribe(theme => {
+        this.currentTheme = theme;
+      });
     }
+  }
+
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
   }
 
   updateCartCount(): void {

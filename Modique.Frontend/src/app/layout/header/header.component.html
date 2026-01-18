@@ -37,7 +37,21 @@
         </div>
       </form>
     </div>
-    <div class="col-lg-3 col-6 text-right mt-2 mt-md-0">
+    <div class="col-lg-3 col-6 text-right mt-2 mt-md-0 d-flex align-items-center justify-content-end">
+      <button 
+        class="theme-toggle mr-3" 
+        [class.dark-mode]="currentTheme === 'dark'"
+        (click)="toggleTheme()" 
+        type="button" 
+        [attr.aria-label]="currentTheme === 'light' ? 'Prebaci na tamni režim' : 'Prebaci na svetli režim'"
+        [title]="currentTheme === 'light' ? 'Tamni režim' : 'Svetli režim'">
+        <span class="theme-icon sun-icon">
+          <i class="fas fa-sun"></i>
+        </span>
+        <span class="theme-icon moon-icon">
+          <i class="fas fa-moon"></i>
+        </span>
+      </button>
       <a routerLink="/wishlist" class="btn border">
         <i class="fas fa-heart text-primary"></i>
         <span class="badge" *ngIf="wishlistCount > 0">{{ wishlistCount }}</span>

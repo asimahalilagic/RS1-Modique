@@ -6,6 +6,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { TokenService } from './core/token.service';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -21,12 +22,15 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private tokenService: TokenService,
+    private themeService: ThemeService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.tokenService.removeToken();
+      // Initialize theme - this will apply the stored theme or default to light
+      this.themeService.getCurrentTheme();
     }
 
     this.router.events
