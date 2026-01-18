@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
 import { ProductService, CreateProductDto, UpdateProductDto, Category, Brand, Product } from '../../services/product.service';
 import { UploadService } from '../../services/upload.service';
+import { ColorService, Color } from '../../services/color.service';
+import { SizeService, Size } from '../../services/size.service';
 
 @Component({
   selector: 'app-products',
@@ -22,11 +24,17 @@ export class ProductsComponent implements OnInit {
     categoryId: 0,
     brandId: 0,
     isActive: true,
-    imageUrls: []
+    imageUrls: [],
+    colorIds: [],
+    sizeIds: []
   };
 
   categories: Category[] = [];
   brands: Brand[] = [];
+  colors: Color[] = [];
+  sizes: Size[] = [];
+  selectedColorIds: number[] = [];
+  selectedSizeIds: number[] = [];
   isLoading = false;
   isLoadingProduct = false;
   isSubmitting = false;
@@ -41,6 +49,8 @@ export class ProductsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private uploadService: UploadService,
+    private colorService: ColorService,
+    private sizeService: SizeService,
     private router: Router,
     private route: ActivatedRoute,
     @Inject(PLATFORM_ID) private platformId: Object
@@ -49,9 +59,13 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.isEditMode = false;
     this.isLoading = true;
+    this.errorMessage = '';
+    this.successMessage = '';
     this.loadProducts();
     this.loadCategories();
     this.loadBrands();
+    this.loadColors();
+    this.loadSizes();
 
     this.route.params.subscribe(params => {
       const id = params['id'];
@@ -109,6 +123,32 @@ export class ProductsComponent implements OnInit {
           } else {
             this.errorMessage = 'Greška pri učitavanju brendova.';
           }
+        }
+      }
+    });
+  }
+
+  loadColors(): void {
+    this.colorService.getColors().subscribe({
+      next: (colors) => {
+        this.colors = colors;
+      },
+      error: (error) => {
+        if (!this.errorMessage) {
+          this.errorMessage = 'Greška pri učitavanju boja.';
+        }
+      }
+    });
+  }
+
+  loadSizes(): void {
+    this.sizeService.getSizes().subscribe({
+      next: (sizes) => {
+        this.sizes = sizes;
+      },
+      error: (error) => {
+        if (!this.errorMessage) {
+          this.errorMessage = 'Greška pri učitavanju veličina.';
         }
       }
     });
@@ -194,7 +234,9 @@ export class ProductsComponent implements OnInit {
           categoryId: product.categoryId,
           brandId: product.brandId,
           isActive: product.isActive,
-          imageUrls: product.images?.map(img => img.imageUrl) || []
+          imageUrls: product.images?.map(img => img.imageUrl) || [],
+          colorIds: product.colorIds || [],
+          sizeIds: product.sizeIds || []
         };
         this.imageUrls = product.images?.map(img => img.imageUrl) || [''];
         this.imageFiles = product.images?.map(img => img.imageUrl) || [''];
@@ -202,6 +244,8 @@ export class ProductsComponent implements OnInit {
           this.imageUrls = [''];
           this.imageFiles = [''];
         }
+        this.selectedColorIds = product.colorIds || [];
+        this.selectedSizeIds = product.sizeIds || [];
         this.isLoadingProduct = false;
         window.scrollTo(0, 0);
       },
@@ -210,6 +254,28 @@ export class ProductsComponent implements OnInit {
         this.isLoadingProduct = false;
       }
     });
+  }
+
+  toggleColor(colorId: number, event: Event): void {
+    const checked = (event.target as HTMLInputElement).checked;
+    if (checked) {
+      if (!this.selectedColorIds.includes(colorId)) {
+        this.selectedColorIds.push(colorId);
+      }
+    } else {
+      this.selectedColorIds = this.selectedColorIds.filter(id => id !== colorId);
+    }
+  }
+
+  toggleSize(sizeId: number, event: Event): void {
+    const checked = (event.target as HTMLInputElement).checked;
+    if (checked) {
+      if (!this.selectedSizeIds.includes(sizeId)) {
+        this.selectedSizeIds.push(sizeId);
+      }
+    } else {
+      this.selectedSizeIds = this.selectedSizeIds.filter(id => id !== sizeId);
+    }
   }
 
   cancelEdit(): void {
@@ -222,10 +288,14 @@ export class ProductsComponent implements OnInit {
       categoryId: 0,
       brandId: 0,
       isActive: true,
-      imageUrls: []
+      imageUrls: [],
+      colorIds: [],
+      sizeIds: []
     };
     this.imageUrls = [''];
     this.imageFiles = [''];
+    this.selectedColorIds = [];
+    this.selectedSizeIds = [];
     this.errorMessage = '';
     this.successMessage = '';
   }
@@ -301,6 +371,9 @@ export class ProductsComponent implements OnInit {
     this.isSubmitting = true;
     this.errorMessage = '';
     this.successMessage = '';
+
+    this.productForm.colorIds = this.selectedColorIds;
+    this.productForm.sizeIds = this.selectedSizeIds;
 
     try {
       const uploadedUrls = await this.uploadImages();

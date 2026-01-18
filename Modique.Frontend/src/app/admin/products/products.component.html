@@ -1,12 +1,18 @@
 <div class="container-fluid bg-secondary mb-5">
   <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
     <h1 class="font-weight-semi-bold text-uppercase mb-3">Admin Panel</h1>
-    <div class="d-inline-flex">
+    <div class="d-inline-flex mb-3">
       <p class="m-0"><a routerLink="/" class="text-dark">Početna stranica</a></p>
       <p class="m-0 px-2">-</p>
       <p class="m-0"><a routerLink="/admin/products" class="text-dark">Admin Panel</a></p>
       <p class="m-0 px-2">-</p>
       <p class="m-0">{{ isEditMode ? 'Uredi proizvod' : 'Upravljanje proizvodima' }}</p>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center" style="gap: 10px;">
+      <a routerLink="/admin/products" class="btn btn-outline-dark" routerLinkActive="active">Proizvodi</a>
+      <a routerLink="/admin/colors" class="btn btn-outline-dark" routerLinkActive="active">Boje</a>
+      <a routerLink="/admin/sizes" class="btn btn-outline-dark" routerLinkActive="active">Veličine</a>
+      <a routerLink="/admin/brands" class="btn btn-outline-dark" routerLinkActive="active">Brendovi</a>
     </div>
   </div>
 </div>
@@ -19,7 +25,7 @@
         <button 
           *ngIf="!isEditMode" 
           class="btn btn-primary"
-          (click)="isEditMode = true; editingProductId = null; productForm = { name: '', description: '', price: 0, categoryId: 0, brandId: 0, isActive: true, imageUrls: [] }; imageUrls = ['']; imageFiles = ['']; errorMessage = ''; successMessage = ''">
+          (click)="isEditMode = true; editingProductId = null; productForm = { name: '', description: '', price: 0, categoryId: 0, brandId: 0, isActive: true, imageUrls: [], colorIds: [], sizeIds: [] }; imageUrls = ['']; imageFiles = []; selectedColorIds = []; selectedSizeIds = []; errorMessage = ''; successMessage = ''">
           Dodaj novi proizvod
         </button>
         <button 
@@ -172,6 +178,50 @@
                       {{ brand.name }}
                     </option>
                   </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="font-weight-bold">Dostupne boje</label>
+                  <div *ngFor="let color of colors" class="form-check">
+                    <input 
+                      class="form-check-input" 
+                      type="checkbox" 
+                      [id]="'color-' + color.colorId"
+                      [value]="color.colorId"
+                      [checked]="selectedColorIds.includes(color.colorId)"
+                      (change)="toggleColor(color.colorId, $event)">
+                    <label class="form-check-label" [for]="'color-' + color.colorId">
+                      <span [style.background-color]="color.colorCode" 
+                            [style.display]="'inline-block'" 
+                            [style.width]="'20px'" 
+                            [style.height]="'20px'" 
+                            [style.border]="'1px solid #ccc'"
+                            [style.margin-right]="'5px'"></span>
+                      {{ color.name }}
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group mb-3">
+                  <label class="font-weight-bold">Dostupne veličine</label>
+                  <div *ngFor="let size of sizes" class="form-check">
+                    <input 
+                      class="form-check-input" 
+                      type="checkbox" 
+                      [id]="'size-' + size.sizeId"
+                      [value]="size.sizeId"
+                      [checked]="selectedSizeIds.includes(size.sizeId)"
+                      (change)="toggleSize(size.sizeId, $event)">
+                    <label class="form-check-label" [for]="'size-' + size.sizeId">
+                      {{ size.code }} <small *ngIf="size.description">({{ size.description }})</small>
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>

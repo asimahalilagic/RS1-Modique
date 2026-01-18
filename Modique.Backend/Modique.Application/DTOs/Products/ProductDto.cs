@@ -21,6 +21,8 @@ public class ProductDto
     public int BrandId { get; set; }
     public string? BrandName { get; set; }
     public List<ProductImageDto> Images { get; set; } = new();
+    public List<int> ColorIds { get; set; } = new();
+    public List<int> SizeIds { get; set; } = new();
 }
 
 public class CreateProductDto
@@ -32,6 +34,8 @@ public class CreateProductDto
     public int BrandId { get; set; }
     public bool IsActive { get; set; } = true;
     public List<string> ImageUrls { get; set; } = new();
+    public List<int> ColorIds { get; set; } = new();
+    public List<int> SizeIds { get; set; } = new();
 }
 
 public class UpdateProductDto
@@ -43,6 +47,8 @@ public class UpdateProductDto
     public int BrandId { get; set; }
     public bool IsActive { get; set; }
     public List<string> ImageUrls { get; set; } = new();
+    public List<int> ColorIds { get; set; } = new();
+    public List<int> SizeIds { get; set; } = new();
 }
 
 

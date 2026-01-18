@@ -36,22 +36,23 @@
 
         <h4 class="text-danger">{{ product.price.toFixed(2) }} KM</h4>
 
-        <div class="mb-3">
+        <div class="mb-3" *ngIf="availableSizes.length > 0">
           <label for="velicina"><strong>Veličina:</strong></label>
-          <select id="velicina" class="form-control w-50" [(ngModel)]="selectedSize">
-            <option *ngFor="let size of sizes" [value]="size">{{ size }}</option>
+          <select id="velicina" class="form-control w-50" [(ngModel)]="selectedSizeId">
+            <option *ngFor="let size of availableSizes" [value]="size.sizeId">{{ size.code }}</option>
           </select>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3" *ngIf="availableColors.length > 0">
           <label><strong>Boja:</strong></label><br />
           <span 
-            *ngFor="let color of colors" 
+            *ngFor="let color of availableColors" 
             class="color-chip" 
-            [class]="'color-chip ' + color.class"
-            [class.is-active]="selectedColor === color.value"
-            (click)="changeColor(color.value)">
-            {{ color.label }}
+            [style.background-color]="color.colorCode"
+            [style.color]="getTextColor(color.colorCode)"
+            [class.is-active]="selectedColorId === color.colorId"
+            (click)="changeColor(color.colorId)">
+            {{ color.name }}
           </span>
         </div>
 

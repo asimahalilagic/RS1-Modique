@@ -1,0 +1,134 @@
+<div class="container-fluid bg-secondary mb-5">
+  <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+    <h1 class="font-weight-semi-bold text-uppercase mb-3">Admin Panel</h1>
+    <div class="d-inline-flex mb-3">
+      <p class="m-0"><a routerLink="/" class="text-dark">Početna stranica</a></p>
+      <p class="m-0 px-2">-</p>
+      <p class="m-0"><a routerLink="/admin/products" class="text-dark">Admin Panel</a></p>
+      <p class="m-0 px-2">-</p>
+      <p class="m-0">Upravljanje veličinama</p>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center" style="gap: 10px;">
+      <a routerLink="/admin/products" class="btn btn-outline-dark" routerLinkActive="active">Proizvodi</a>
+      <a routerLink="/admin/colors" class="btn btn-outline-dark" routerLinkActive="active">Boje</a>
+      <a routerLink="/admin/sizes" class="btn btn-outline-dark" routerLinkActive="active">Veličine</a>
+      <a routerLink="/admin/brands" class="btn btn-outline-dark" routerLinkActive="active">Brendovi</a>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid pt-5">
+  <div class="row px-xl-5">
+    <div class="col-12 mb-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Veličine</h2>
+        <button 
+          *ngIf="!isEditMode" 
+          class="btn btn-primary"
+          (click)="isEditMode = true; editingSizeId = null; sizeForm = { code: '', description: '' }; errorMessage = ''; successMessage = ''">
+          Dodaj novu veličinu
+        </button>
+        <button 
+          *ngIf="isEditMode" 
+          class="btn btn-secondary"
+          (click)="cancelEdit()">
+          Otkaži
+        </button>
+      </div>
+    </div>
+
+    <div class="col-12" *ngIf="!isEditMode">
+      <div class="card border-0 shadow">
+        <div class="card-body">
+          <div *ngIf="isLoading" class="text-center py-5">
+            <div class="spinner-border text-primary" role="status">
+              <span class="sr-only">Učitavanje...</span>
+            </div>
+          </div>
+
+          <div *ngIf="errorMessage && !isLoading" class="alert alert-danger mb-3" role="alert">
+            {{ errorMessage }}
+          </div>
+
+          <div *ngIf="!isLoading && sizes.length === 0 && !errorMessage" class="text-center py-5">
+            <p class="text-muted">Nema veličina u bazi podataka.</p>
+          </div>
+
+          <div *ngIf="!isLoading && sizes.length > 0" class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Kod</th>
+                  <th>Opis</th>
+                  <th>Akcije</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let size of sizes">
+                  <td>{{ size.sizeId }}</td>
+                  <td>{{ size.code }}</td>
+                  <td>{{ size.description || '-' }}</td>
+                  <td>
+                    <button class="btn btn-sm btn-info me-2" (click)="editSize(size.sizeId)">Uredi</button>
+                    <button class="btn btn-sm btn-danger" (click)="deleteSize(size.sizeId)">Obriši</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8 offset-lg-2" *ngIf="isEditMode">
+      <div class="card border-0 shadow">
+        <div class="card-body p-5">
+          <h3 class="mb-4">{{ editingSizeId ? 'Uredi veličinu' : 'Dodaj novu veličinu' }}</h3>
+
+          <div class="alert alert-danger" *ngIf="errorMessage" role="alert">
+            {{ errorMessage }}
+          </div>
+
+          <div class="alert alert-success" *ngIf="successMessage" role="alert">
+            {{ successMessage }}
+          </div>
+
+          <form (ngSubmit)="onSubmit()" #form="ngForm">
+            <div class="form-group mb-3">
+              <label for="code" class="font-weight-bold">Kod veličine *</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="code" 
+                [(ngModel)]="sizeForm.code"
+                name="code"
+                required
+                placeholder="npr. S, M, L, XL">
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="description" class="font-weight-bold">Opis</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="description" 
+                [(ngModel)]="sizeForm.description"
+                name="description"
+                placeholder="Opcionalni opis veličine">
+            </div>
+
+            <div class="form-group mb-3">
+              <button type="submit" class="btn btn-primary" [disabled]="isSubmitting">
+                {{ isSubmitting ? 'Čuvanje...' : (editingSizeId ? 'Ažuriraj' : 'Dodaj') }}
+              </button>
+              <button type="button" class="btn btn-secondary ms-2" (click)="cancelEdit()" *ngIf="isEditMode">
+                Otkaži
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

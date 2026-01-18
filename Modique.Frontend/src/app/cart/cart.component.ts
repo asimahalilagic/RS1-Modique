@@ -78,7 +78,6 @@ export class CartComponent implements OnInit {
     if (item.img) {
       return item.img;
     }
-    // Fallback to default image path
     return `/assets/img/${item.name.toLowerCase().replace(/\s+/g, '')}.jpg`;
   }
 

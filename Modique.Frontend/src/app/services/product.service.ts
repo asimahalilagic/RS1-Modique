@@ -21,6 +21,8 @@ export interface Product {
   brandId: number;
   brandName?: string;
   images?: ProductImage[];
+  colorIds?: number[];
+  sizeIds?: number[];
 }
 
 export interface PagedResult<T> {
@@ -89,6 +91,18 @@ export class ProductService {
   getBrands(): Observable<Brand[]> {
     return this.http.get<Brand[]>('http://localhost:5097/api/brands');
   }
+
+  createBrand(brand: CreateBrandDto): Observable<Brand> {
+    return this.http.post<Brand>('http://localhost:5097/api/brands', brand);
+  }
+
+  updateBrand(id: number, brand: UpdateBrandDto): Observable<Brand> {
+    return this.http.put<Brand>(`http://localhost:5097/api/brands/${id}`, brand);
+  }
+
+  deleteBrand(id: number): Observable<void> {
+    return this.http.delete<void>(`http://localhost:5097/api/brands/${id}`);
+  }
 }
 
 export interface CreateProductDto {
@@ -99,6 +113,8 @@ export interface CreateProductDto {
   brandId: number;
   isActive?: boolean;
   imageUrls?: string[];
+  colorIds?: number[];
+  sizeIds?: number[];
 }
 
 export interface UpdateProductDto {
@@ -109,6 +125,8 @@ export interface UpdateProductDto {
   brandId: number;
   isActive: boolean;
   imageUrls?: string[];
+  colorIds?: number[];
+  sizeIds?: number[];
 }
 
 export interface Category {
@@ -119,6 +137,19 @@ export interface Category {
 }
 
 export interface Brand {
+  brandId: number;
+  name: string;
+  country: string;
+  logoURL: string;
+}
+
+export interface CreateBrandDto {
+  name: string;
+  country: string;
+  logoURL: string;
+}
+
+export interface UpdateBrandDto {
   brandId: number;
   name: string;
   country: string;

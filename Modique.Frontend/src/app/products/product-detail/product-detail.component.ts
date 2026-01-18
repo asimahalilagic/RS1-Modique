@@ -4,6 +4,8 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ProductService, Product } from '../../services/product.service';
 import { ProductCardComponent } from '../product-card/product-card.component';
+import { ColorService, Color } from '../../services/color.service';
+import { SizeService, Size } from '../../services/size.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -17,32 +19,23 @@ export class ProductDetailComponent implements OnInit {
   relatedProducts: Product[] = [];
   isLoading = false;
   currentImageIndex = 0;
-  selectedColor = 'crna';
-  selectedSize = 'Mala';
+  selectedColorId: number | null = null;
+  selectedSizeId: number | null = null;
   quantity = 1;
   activeTab = 'opis';
   favorites: Set<number> = new Set();
   zoomedImage: string | null = null;
   showZoomModal = false;
 
-  productImages: { [key: string]: string[] } = {
-    crna: ['lc1.webp', 'lc2.webp', 'lc3.webp', 'lc4.webp', 'lc5.webp'],
-    bez: ['longchampbez_1.webp', 'longchamp_bez_2.webp', 'longchampbez_3.webp', 'longchampbez_4.webp', 'longchampbez_5.webp'],
-    plava: ['lcp1.webp', 'lcp2.webp', 'lcp3.webp', 'lcp4.webp', 'lcp5.webp']
-  };
-
-  colors = [
-    { value: 'crna', label: 'Crna', class: 'color-black' },
-    { value: 'bez', label: 'Bež', class: 'color-beige' },
-    { value: 'plava', label: 'Plava', class: 'color-navy' }
-  ];
-
-  sizes = ['Mala', 'Srednja', 'Velika'];
+  availableColors: Color[] = [];
+  availableSizes: Size[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private productService: ProductService,
+    private colorService: ColorService,
+    private sizeService: SizeService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     if (isPlatformBrowser(this.platformId)) {
@@ -65,10 +58,41 @@ export class ProductDetailComponent implements OnInit {
     this.productService.getProductById(id).subscribe({
       next: (product) => {
         this.product = product;
+        this.updateAvailableOptions();
         this.isLoading = false;
       },
       error: (error) => {
         this.isLoading = false;
+      }
+    });
+  }
+
+  updateAvailableOptions(): void {
+    if (!this.product) return;
+
+    this.colorService.getColors().subscribe({
+      next: (allColors) => {
+        if (this.product && this.product.colorIds && this.product.colorIds.length > 0) {
+          this.availableColors = allColors.filter(c => this.product!.colorIds!.includes(c.colorId));
+          if (this.availableColors.length > 0 && !this.selectedColorId) {
+            this.selectedColorId = this.availableColors[0].colorId;
+          }
+        } else {
+          this.availableColors = [];
+        }
+      }
+    });
+
+    this.sizeService.getSizes().subscribe({
+      next: (allSizes) => {
+        if (this.product && this.product.sizeIds && this.product.sizeIds.length > 0) {
+          this.availableSizes = allSizes.filter(s => this.product!.sizeIds!.includes(s.sizeId));
+          if (this.availableSizes.length > 0 && !this.selectedSizeId) {
+            this.selectedSizeId = this.availableSizes[0].sizeId;
+          }
+        } else {
+          this.availableSizes = [];
+        }
       }
     });
   }
@@ -87,7 +111,7 @@ export class ProductDetailComponent implements OnInit {
     if (this.product && this.product.images && this.product.images.length > 0) {
       return this.product.images.map(img => img.imageUrl);
     }
-    return this.productImages[this.selectedColor] || this.productImages['crna'];
+    return [];
   }
 
   getCurrentImage(): string {
@@ -127,9 +151,18 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
-  changeColor(color: string): void {
-    this.selectedColor = color;
+  changeColor(colorId: number): void {
+    this.selectedColorId = colorId;
     this.currentImageIndex = 0;
+  }
+
+  getTextColor(backgroundColor: string): string {
+    const hex = backgroundColor.replace('#', '');
+    const r = parseInt(hex.slice(0, 2), 16);
+    const g = parseInt(hex.slice(2, 4), 16);
+    const b = parseInt(hex.slice(4, 6), 16);
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+    return brightness > 128 ? '#000000' : '#ffffff';
   }
 
   decreaseQuantity(): void {

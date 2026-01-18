@@ -38,20 +38,30 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
           <div class="navbar-nav mr-auto py-0">
-            <a routerLink="/" class="nav-item nav-link" [class.active]="isActive('/')">Početna stranica</a>
-            <a routerLink="/shop" class="nav-item nav-link" [class.active]="isActive('/shop') || isActive('/products')">Trgovina</a>
-            <a routerLink="/orders" class="nav-item nav-link" [class.active]="isActive('/orders')">Detalji narudžbe</a>
-            <div class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" (click)="togglePurchase(); $event.preventDefault()">
-                Kupovina
-                <i class="fa" [class.fa-angle-down]="!purchaseOpen" [class.fa-angle-up]="purchaseOpen"></i>
-              </a>
-              <div class="dropdown-menu rounded-0 m-0" [style.display]="purchaseOpen ? 'block' : 'none'">
-                <a routerLink="/cart" class="dropdown-item" (click)="purchaseOpen = false">Košara</a>
-                <a routerLink="/wishlist" class="dropdown-item" (click)="purchaseOpen = false">Favoriti</a>
+            <ng-container *ngIf="isAuthenticated && isAdmin">
+              <a routerLink="/" class="nav-item nav-link" [class.active]="isActive('/')">Početna stranica</a>
+              <a routerLink="/admin/products" class="nav-item nav-link" [class.active]="isActive('/admin/products')">Proizvodi</a>
+              <a routerLink="/admin/brands" class="nav-item nav-link" [class.active]="isActive('/admin/brands')">Brendovi</a>
+              <a routerLink="/admin/colors" class="nav-item nav-link" [class.active]="isActive('/admin/colors')">Boje</a>
+              <a routerLink="/admin/sizes" class="nav-item nav-link" [class.active]="isActive('/admin/sizes')">Veličine</a>
+            </ng-container>
+            
+            <ng-container *ngIf="!isAuthenticated || (isAuthenticated && !isAdmin)">
+              <a routerLink="/" class="nav-item nav-link" [class.active]="isActive('/')">Početna stranica</a>
+              <a routerLink="/shop" class="nav-item nav-link" [class.active]="isActive('/shop') || isActive('/products')">Trgovina</a>
+              <a routerLink="/orders" class="nav-item nav-link" [class.active]="isActive('/orders')">Detalji narudžbe</a>
+              <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" (click)="togglePurchase(); $event.preventDefault()">
+                  Kupovina
+                  <i class="fa" [class.fa-angle-down]="!purchaseOpen" [class.fa-angle-up]="purchaseOpen"></i>
+                </a>
+                <div class="dropdown-menu rounded-0 m-0" [style.display]="purchaseOpen ? 'block' : 'none'">
+                  <a routerLink="/cart" class="dropdown-item" (click)="purchaseOpen = false">Košara</a>
+                  <a routerLink="/wishlist" class="dropdown-item" (click)="purchaseOpen = false">Favoriti</a>
+                </div>
               </div>
-            </div>
-            <a routerLink="/contact" class="nav-item nav-link" [class.active]="isActive('/contact')">Kontakt</a>
+              <a routerLink="/contact" class="nav-item nav-link" [class.active]="isActive('/contact')">Kontakt</a>
+            </ng-container>
           </div>
           <div class="navbar-nav ml-auto py-0">
             <a *ngIf="!isAuthenticated" routerLink="/auth/login" class="nav-item nav-link" [class.active]="isActive('/auth/login')">Prijava</a>

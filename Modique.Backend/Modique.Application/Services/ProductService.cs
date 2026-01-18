@@ -118,10 +118,14 @@ public class ProductService : IProductService
             .Include(p => p.Category)
             .Include(p => p.Brand)
             .Include(p => p.Images)
+            .Include(p => p.Options)
             .FirstOrDefaultAsync(p => p.ProductId == id);
 
         if (product == null)
             return null;
+
+        var colorIds = product.Options?.Select(o => o.ColorId).Distinct().ToList() ?? new List<int>();
+        var sizeIds = product.Options?.Select(o => o.SizeId).Distinct().ToList() ?? new List<int>();
 
         return new ProductDto
         {
@@ -141,7 +145,9 @@ public class ProductService : IProductService
                 ImageUrl = i.ImageUrl,
                 Order = i.Order,
                 IsMain = i.IsMain
-            }).ToList()
+            }).ToList(),
+            ColorIds = colorIds,
+            SizeIds = sizeIds
         };
     }
 
@@ -174,8 +180,28 @@ public class ProductService : IProductService
                 };
                 _db.ProductImages.Add(image);
             }
-            await _db.SaveChangesAsync();
         }
+
+        if (dto.ColorIds != null && dto.ColorIds.Any() && dto.SizeIds != null && dto.SizeIds.Any())
+        {
+            foreach (var colorId in dto.ColorIds)
+            {
+                foreach (var sizeId in dto.SizeIds)
+                {
+                    var productOption = new ProductOption
+                    {
+                        ProductId = product.ProductId,
+                        ColorId = colorId,
+                        SizeId = sizeId,
+                        QuantityInStock = 0,
+                        SKU = $"{product.ProductId}-{colorId}-{sizeId}"
+                    };
+                    _db.ProductOptions.Add(productOption);
+                }
+            }
+        }
+
+        await _db.SaveChangesAsync();
 
         _logger.LogInformation("Product created: {ProductId} - {ProductName}", product.ProductId, product.Name);
 
@@ -212,6 +238,30 @@ public class ProductService : IProductService
                     IsMain = i == 0
                 };
                 _db.ProductImages.Add(image);
+            }
+        }
+
+        var existingOptions = await _db.ProductOptions
+            .Where(po => po.ProductId == product.ProductId)
+            .ToListAsync();
+        _db.ProductOptions.RemoveRange(existingOptions);
+
+        if (dto.ColorIds != null && dto.ColorIds.Any() && dto.SizeIds != null && dto.SizeIds.Any())
+        {
+            foreach (var colorId in dto.ColorIds)
+            {
+                foreach (var sizeId in dto.SizeIds)
+                {
+                    var productOption = new ProductOption
+                    {
+                        ProductId = product.ProductId,
+                        ColorId = colorId,
+                        SizeId = sizeId,
+                        QuantityInStock = 0,
+                        SKU = $"{product.ProductId}-{colorId}-{sizeId}"
+                    };
+                    _db.ProductOptions.Add(productOption);
+                }
             }
         }
 

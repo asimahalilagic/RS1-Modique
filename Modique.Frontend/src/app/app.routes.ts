@@ -8,6 +8,9 @@ import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { ProductsComponent as AdminProductsComponent } from './admin/products/products.component';
+import { ColorsComponent } from './admin/colors/colors.component';
+import { SizesComponent } from './admin/sizes/sizes.component';
+import { BrandsComponent } from './admin/brands/brands.component';
 import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
 import { adminGuard } from './core/admin.guard';
 
@@ -54,8 +57,25 @@ export const routes: Routes = [
     canActivate: [adminGuard],
     children: [
       {
+        path: '',
+        redirectTo: 'products',
+        pathMatch: 'full'
+      },
+      {
         path: 'products',
         component: AdminProductsComponent
+      },
+      {
+        path: 'colors',
+        component: ColorsComponent
+      },
+      {
+        path: 'sizes',
+        component: SizesComponent
+      },
+      {
+        path: 'brands',
+        component: BrandsComponent
       }
     ]
   }

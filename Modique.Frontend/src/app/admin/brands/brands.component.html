@@ -1,0 +1,150 @@
+<div class="container-fluid bg-secondary mb-5">
+  <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+    <h1 class="font-weight-semi-bold text-uppercase mb-3">Admin Panel</h1>
+    <div class="d-inline-flex mb-3">
+      <p class="m-0"><a routerLink="/" class="text-dark">Početna stranica</a></p>
+      <p class="m-0 px-2">-</p>
+      <p class="m-0"><a routerLink="/admin/products" class="text-dark">Admin Panel</a></p>
+      <p class="m-0 px-2">-</p>
+      <p class="m-0">Upravljanje brendovima</p>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center" style="gap: 10px;">
+      <a routerLink="/admin/products" class="btn btn-outline-dark" routerLinkActive="active">Proizvodi</a>
+      <a routerLink="/admin/colors" class="btn btn-outline-dark" routerLinkActive="active">Boje</a>
+      <a routerLink="/admin/sizes" class="btn btn-outline-dark" routerLinkActive="active">Veličine</a>
+      <a routerLink="/admin/brands" class="btn btn-outline-dark" routerLinkActive="active">Brendovi</a>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid pt-5">
+  <div class="row px-xl-5">
+    <div class="col-12 mb-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Brendovi</h2>
+        <button 
+          *ngIf="!isEditMode" 
+          class="btn btn-primary"
+          (click)="isEditMode = true; editingBrandId = null; brandForm = { name: '', country: '', logoURL: '' }; errorMessage = ''; successMessage = ''">
+          Dodaj novi brend
+        </button>
+        <button 
+          *ngIf="isEditMode" 
+          class="btn btn-secondary"
+          (click)="cancelEdit()">
+          Otkaži
+        </button>
+      </div>
+    </div>
+
+    <div class="col-12" *ngIf="!isEditMode">
+      <div class="card border-0 shadow">
+        <div class="card-body">
+          <div *ngIf="isLoading" class="text-center py-5">
+            <div class="spinner-border text-primary" role="status">
+              <span class="sr-only">Učitavanje...</span>
+            </div>
+          </div>
+
+          <div *ngIf="errorMessage && !isLoading" class="alert alert-danger mb-3" role="alert">
+            {{ errorMessage }}
+          </div>
+
+          <div *ngIf="!isLoading && brands.length === 0 && !errorMessage" class="text-center py-5">
+            <p class="text-muted">Nema brendova u bazi podataka.</p>
+          </div>
+
+          <div *ngIf="!isLoading && brands.length > 0" class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Naziv</th>
+                  <th>Zemlja</th>
+                  <th>Logo URL</th>
+                  <th>Akcije</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let brand of brands">
+                  <td>{{ brand.brandId }}</td>
+                  <td>{{ brand.name }}</td>
+                  <td>{{ brand.country }}</td>
+                  <td>
+                    <a [href]="brand.logoURL" target="_blank" *ngIf="brand.logoURL">{{ brand.logoURL }}</a>
+                    <span *ngIf="!brand.logoURL">-</span>
+                  </td>
+                  <td>
+                    <button class="btn btn-sm btn-info me-2" (click)="editBrand(brand.brandId)">Uredi</button>
+                    <button class="btn btn-sm btn-danger" (click)="deleteBrand(brand.brandId)">Obriši</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8 offset-lg-2" *ngIf="isEditMode">
+      <div class="card border-0 shadow">
+        <div class="card-body p-5">
+          <h3 class="mb-4">{{ editingBrandId ? 'Uredi brend' : 'Dodaj novi brend' }}</h3>
+
+          <div class="alert alert-danger" *ngIf="errorMessage" role="alert">
+            {{ errorMessage }}
+          </div>
+
+          <div class="alert alert-success" *ngIf="successMessage" role="alert">
+            {{ successMessage }}
+          </div>
+
+          <form (ngSubmit)="onSubmit()" #form="ngForm">
+            <div class="form-group mb-3">
+              <label for="name" class="font-weight-bold">Naziv brenda *</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="name" 
+                [(ngModel)]="brandForm.name"
+                name="name"
+                required
+                placeholder="Unesite naziv brenda">
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="country" class="font-weight-bold">Zemlja</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="country" 
+                [(ngModel)]="brandForm.country"
+                name="country"
+                placeholder="Unesite zemlju brenda">
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="logoURL" class="font-weight-bold">Logo URL</label>
+              <input 
+                type="url" 
+                class="form-control" 
+                id="logoURL" 
+                [(ngModel)]="brandForm.logoURL"
+                name="logoURL"
+                placeholder="https://example.com/logo.png">
+            </div>
+
+            <div class="form-group mb-3">
+              <button type="submit" class="btn btn-primary" [disabled]="isSubmitting">
+                {{ isSubmitting ? 'Čuvanje...' : (editingBrandId ? 'Ažuriraj' : 'Dodaj') }}
+              </button>
+              <button type="button" class="btn btn-secondary ms-2" (click)="cancelEdit()" *ngIf="isEditMode">
+                Otkaži
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
